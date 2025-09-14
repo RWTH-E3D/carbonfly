@@ -29,16 +29,9 @@ A lightweight, easy-to-use Python API and toolbox for indoor CO2 CFD simulations
 
 See our [Examples](./examples):
 
-<table style="table-layout: fixed; width: 100%;">
-  <tr>
-    <td align="center" valign="top">
-      <img src="./pics/carbonfly_overview.gif" width="100%" alt="Carbonfly workflow overview" />
-    </td>
-    <td align="center" valign="top">
-      <img src="./examples/_pics/01a_simple_mech_vent_transient_ParaView.gif" width="73%" alt="Example 01a simulation result 30s" />
-    </td>
-  </tr>
-</table>
+<img src="./pics/carbonfly_overview.gif" width="50%" alt="Carbonfly workflow overview" />
+
+<img src="./examples/_pics/01a_simple_mech_vent_transient_ParaView.gif" width="50%" alt="Example 01a simulation results GIF" />
 
 ## Roadmap
 
