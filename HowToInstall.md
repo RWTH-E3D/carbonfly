@@ -26,7 +26,7 @@ Install WSL 2 with Ubuntu-20.04 (should also work with Ubuntu-22.04, not tested)
 
 <img src="./pics/install_wsl_03.png" alt="finish wsl Ubuntu-20.04" width="50%">
 
-[Back to top ↥](#quick-navigation)
+[Back to top ↥](#carbonfly)
 
 ### Step 2: Install OpenFOAM v10
 
@@ -51,7 +51,7 @@ As described in OpenFOAM documentation, complete the following:
 
 <img src="./pics/install_openfoam_03.png" alt="add openfoam in .bashrc file" width="50%">
 
-[Back to top ↥](#quick-navigation)
+[Back to top ↥](#carbonfly)
 
 ### Step 3: Install Carbonfly
 
@@ -77,7 +77,7 @@ As described in OpenFOAM documentation, complete the following:
 
 Coming soon...
 
-[Back to top ↥](#quick-navigation)
+[Back to top ↥](#carbonfly)
 
 ### Step 4: Install ParaView (optional)
 
