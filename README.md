@@ -31,7 +31,7 @@ A lightweight, easy-to-use Python API and toolbox for indoor CO2 CFD simulations
 
 | Feature | Status | Implementation Details |
 |-|-|-|
-| Transient and steady-state CFD simulation of indoor CO2 / temperature / velocity etc. for mechanical ventilation | ✅ Done (v1.0.0) | Based on WSL 2 (Ubuntu-20.04) & OpenFOAM v10. Solver `buoyantReactingFoam` which supports multi-species with enhanced buoyancy treatment. The reaction is disabled and only the mixing, mainly driven by buoyancy, is considered.|
+| Transient and steady-state CFD simulation of indoor CO2 / temperature / velocity etc. for mechanical ventilation | ✅ Done (v0.1.0) | Based on WSL 2 (Ubuntu-20.04) & OpenFOAM v10. Solver `buoyantReactingFoam` which supports multi-species with enhanced buoyancy treatment. The reaction is disabled and only the mixing, mainly driven by buoyancy, is considered.|
 | Natural ventilation through open windows | ⏳ Planned | - |
 | Manikins with different levels of detail | ⏳ Planned | - |
 
