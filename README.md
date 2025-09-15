@@ -7,8 +7,9 @@
 [![WSL](https://img.shields.io/badge/WSL_2_|_Ubuntu-7a6fac)](https://learn.microsoft.com/en-us/windows/wsl/install)&nbsp;
 [![OpenFOAM](https://img.shields.io/badge/OpenFOAM_v10-7a6fac)](https://openfoam.org/version/10/)&nbsp;
 [![License](https://img.shields.io/github/license/RWTH-E3D/carbonfly?color=888)](https://github.com/RWTH-E3D/carbonfly/blob/master/LICENSE)&nbsp;
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17117827.svg)](https://doi.org/10.5281/zenodo.17117827)
 
-A lightweight, easy-to-use Python API and toolbox for indoor CO2 CFD simulations in Grasshopper based on OpenFOAM and the Windows Subsystem for Linux (WSL).
+A lightweight, easy-to-use Python library and toolbox for indoor CO2 CFD simulation in Grasshopper, based on OpenFOAM and the Windows Subsystem for Linux (WSL).
 
 ## Quick Navigation
 
@@ -69,6 +70,34 @@ Copyright (C) 2025 Qirui Huang, [Institute for Energy Efficiency and Sustainable
 
 ## How to cite
 
-Coming soon...
+If you want to cite **Carbonfly** in your academic work, there are two ways to do it:
+
+- Each release is archived on [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17117827.svg)](https://doi.org/10.5281/zenodo.17117827). Please either cite the version you used as indexed at Zenodo (for reproducibility) or cite all versions.
+
+  **Examples:**
+
+  BibTeX:
+
+  ```bibtex
+  @software{Carbonfly_Huang,
+    author    = {Qirui Huang},
+    title     = {Carbonfly},
+    subtitle  = {A lightweight, easy-to-use Python library and toolbox for indoor CO2 CFD simulation in Grasshopper},
+    date      = {2025},
+    publisher = {Zenodo},
+    url       = {https://github.com/RWTH-E3D/carbonfly},
+    note      = {GitHub repository},
+    doi       = {10.5281/zenodo.17117827}
+  }
+  ```
+
+  APA style:
+  ```
+  Huang, Q. (2025). Carbonfly: A lightweight, easy-to-use Python library and toolbox for indoor CO2 CFD simulation in Grasshopper [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.17117827
+  ```
+
+- If you wish to cite **Carbonfly** for its design, methodology, etc. (rather than a specific release), please cite our paper:
+
+  Coming soon...
 
 [Back to top ↥](#quick-navigation)
