@@ -36,11 +36,36 @@ See our [Examples](./examples):
 
 ## Roadmap
 
-| Feature | Status | Implementation Details |
-|-|-|-|
-| Transient and steady-state CFD simulation of indoor CO2 / temperature / velocity etc. for mechanical ventilation | ✅ Done (v0.1.0) | Based on WSL 2 (Ubuntu-20.04) & OpenFOAM v10. Solver `buoyantReactingFoam` which supports multi-species with enhanced buoyancy treatment. The reaction is disabled and only the mixing, mainly driven by buoyancy, is considered.|
-| Natural ventilation through open windows | ⏳ Planned | - |
-| Manikins with different levels of detail | ⏳ Planned | - |
+<table style="width:100%">
+  <tr>
+    <th>Feature</th>
+    <th>Status</th>
+    <th>Implementation Details</th>
+  </tr>
+  <tr>
+    <td>Transient and steady-state CFD simulation of indoor CO2 / temperature / velocity etc. for mechanical ventilation</td>
+    <td>✅ Done (v0.1.0)</td>
+    <td>Based on WSL 2 (Ubuntu-20.04) &amp; OpenFOAM v10. Solver <code>buoyantReactingFoam</code> which supports multi-species with enhanced buoyancy treatment. The reaction is disabled and only the mixing, mainly driven by buoyancy, is considered.</td>
+  </tr>
+  <tr>
+    <td>Natural ventilation through open windows</td>
+    <td>⏳ Planned</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td rowspan="3">Manikins with different Levels of Detail (LOD)</td>
+    <td>✅ Done (v0.2.0)</td>
+    <td>LOD0 Manikin is a simplified human model focused on CO2 dispersion. It is represented by straight lines and basic geometric volumes, without body part subdivision. Breathing is simplified to mouth breathing only, with no nasal passage. This abstraction is well suited for multi-occupant scenarios where reduced CFD mesh size and computational cost are essential.</td>
+  </tr>
+  <tr>
+    <td>⏳ Planned</td>
+    <td>LOD1</td>
+  </tr>
+  <tr>
+    <td>⏳ Planned</td>
+    <td>LOD2</td>
+  </tr>
+</table>
 
 [Back to top ↥](#quick-navigation)
 
