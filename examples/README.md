@@ -5,9 +5,11 @@ Below is a collection of examples with descriptions to help you get started quic
 ## Quick Navigation
 
 - Example 01: [A simple mechanically ventilated (mixing ventilation) room](#example-01): 
-    - [Transient](#example-01a): `01a_simple_mech_vent_transient.gh`
-    - [Steady-state](#example-01b): `01b_simple_mech_vent_steadystate.gh`
-
+  - [Transient](#example-01a): `01a_simple_mech_vent_transient.gh`
+  - [Steady-state](#example-01b): `01b_simple_mech_vent_steadystate.gh`
+- Example 02: [A simple mechanically ventilated (mixing ventilation) room with a manikin (LOD 0)](#example-02):
+  - [Transient](#example-02a): `02a_simple_mech_vent_human_lod0_transient.gh`
+  - [Steady-state](#example-02b): `02b_simple_mech_vent_human_lod0_steadystate.gh`
 
 ## Example 01
 
@@ -73,7 +75,7 @@ Transient simulation (0 - 300 s). Results in ParaView:
 
 #### Residuals:
 
-![Example 01a residuals](./_pics/01a_simple_mech_vent_transient_residuals.png)
+<img src="./_pics/01a_simple_mech_vent_transient_residuals.png" width="50%" alt="Example 01a residuals" />
 
 ### Example 01b
 
@@ -84,7 +86,50 @@ Steady-state simulation (2000 iterations). Results in ParaView:
 
 #### Residuals:
 
-![Example 01b residuals](./_pics/01b_simple_mech_vent_steadystate_residuals.png)
+<img src="./_pics/01b_simple_mech_vent_steadystate_residuals.png" width="50%" alt="Example 01b residuals" />
+
+
+[Back to top ↥](#quick-navigation)
+
+## Example 02
+
+A simple mechanically ventilated (mixing ventilation) room with a manikin (LOD 0):
+
+- White: Walls and floor
+  - T: 295.15 K
+- Green: Air inlet
+  - U: 0.2 m/s
+  - T: 293.15 K
+  - CO2: 400 ppm
+- Orange: Air outlet
+- Blue: Ceiling (excluding air inlets and outlets)
+  - T: 295.15 K
+- Black: A manikin with Level of Detail of 0
+  - T: 307.85 K
+  - Body Surface Area: 1.7 m2
+- Red: Mouth of the manikin
+  - U: 7.2 L/min
+  - T: 309.15 K
+  - CO2: 46000 ppm (0.0055 L/s CO2)
+- Internal Fields
+  - T: 300 K
+  - CO2: 1000 ppm
+
+![Example 02 Room Model](./_pics/02_simple_mech_vent_human_lod0_Rhino.png)
+
+### Example 02a
+
+Transient simulation (0 - 300 s). Results in ParaView:
+
+### Example 02b
+
+Steady-state simulation (2000 iterations). Results in ParaView:
+
+![Example 02b simulation result](./_pics/02b_simple_mech_vent_human_lod0_steadystate_ParaView.png)
+
+#### Residuals:
+
+<img src="./_pics/02b_simple_mech_vent_human_lod0_steadystate_residuals.png" width="50%" alt="Example 02b residuals" />
 
 
 [Back to top ↥](#quick-navigation)
