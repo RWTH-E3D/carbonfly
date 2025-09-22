@@ -121,6 +121,47 @@ A simple mechanically ventilated (mixing ventilation) room with a manikin (LOD 0
 
 Transient simulation (0 - 300 s). Results in ParaView:
 
+
+![Example 02a simulation results GIF](./_pics/02a_simple_mech_vent_human_lod0_transient_ParaView.gif)
+
+
+<table style="table-layout: fixed; width: 100%;">
+  <tr>
+    <td align="center" valign="top">
+      <img src="./_pics/02a_simple_mech_vent_human_lod0_transient_ParaView_05s.png" width="100%" alt="Example 02a simulation result 05s" />
+      <br/>
+      <sub>
+        time = 5 s
+      </sub>
+    </td>
+    <td align="center" valign="top">
+      <img src="./_pics/02a_simple_mech_vent_human_lod0_transient_ParaView_30s.png" width="100%" alt="Example 02a simulation result 30s" />
+      <br/>
+      <sub>
+        time = 30 s
+      </sub>
+    </td>
+    <td align="center" valign="top">
+      <img src="./_pics/02a_simple_mech_vent_human_lod0_transient_ParaView_90s.png" width="100%" alt="Example 02a simulation result 90s" />
+      <br/>
+      <sub>
+        time = 90 s
+      </sub>
+    </td>
+    <td align="center" valign="top">
+      <img src="./_pics/02a_simple_mech_vent_human_lod0_transient_ParaView_300s.png" width="100%" alt="Example 02a simulation result 300s" />
+      <br/>
+      <sub>
+        time = 300 s
+      </sub>
+    </td>
+  </tr>
+</table>
+
+#### Residuals:
+
+<img src="./_pics/02a_simple_mech_vent_human_lod0_transient_residuals.png" width="50%" alt="Example 02a residuals" />
+
 ### Example 02b
 
 Steady-state simulation (2000 iterations). Results in ParaView:
