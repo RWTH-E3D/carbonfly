@@ -12,7 +12,7 @@
 
 ### Step 1: Install WSL
 
-Install WSL 2 with Ubuntu-20.04 (should also work with Ubuntu-22.04, not tested), see [WSL Documentation - How to install Linux on Windows with WSL](https://learn.microsoft.com/en-us/windows/wsl/install):
+Install WSL 2 with Ubuntu-20.04 (should also work with Ubuntu-22.04, not tested) in a terminal window (e.g. PowerShell), see [WSL Documentation - How to install Linux on Windows with WSL](https://learn.microsoft.com/en-us/windows/wsl/install):
 
 1. `wsl --install -d Ubuntu-20.04`
 
@@ -30,12 +30,14 @@ Install WSL 2 with Ubuntu-20.04 (should also work with Ubuntu-22.04, not tested)
 
 ### Step 2: Install OpenFOAM v10
 
-Install OpenFOAM v10 in WSL, see [Download v10 | Ubuntu](https://openfoam.org/download/10-ubuntu/):
+Install OpenFOAM v10 in WSL - Ubuntu 20.04 LTS (should be able to find it in the Windows menu, with an orange icon), see [Download v10 | Ubuntu](https://openfoam.org/download/10-ubuntu/):
 
 1. `sudo sh -c "wget -O - https://dl.openfoam.org/gpg.key > /etc/apt/trusted.gpg.d/openfoam.asc"`
 2. `sudo add-apt-repository http://dl.openfoam.org/ubuntu`
 3. `sudo apt-get update`
 4. `sudo apt-get -y install openfoam10`
+
+> Tip: Ctrl+V doesn't work in Ubuntu, use right-click to paste
 
 As described in OpenFOAM documentation, complete the following:
 
