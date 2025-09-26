@@ -14,15 +14,17 @@
 
 Install WSL 2 with Ubuntu-20.04 (should also work with Ubuntu-22.04, not tested), see [WSL Documentation - How to install Linux on Windows with WSL](https://learn.microsoft.com/en-us/windows/wsl/install):
 
-1. `wsl --install d Ubuntu-20.04`
+1. `wsl --install`
+
+2. `wsl --install -d Ubuntu-20.04`
 
 <img src="./pics/install_wsl_01.png" alt="install wsl Ubuntu-20.04" width="50%">
 
-2. Open `Ubuntu 20.04 LTS`, you will see the following console. Please set up your WSL, see [Set up a WSL development environment](https://learn.microsoft.com/en-us/windows/wsl/setup/environment#set-up-your-linux-username-and-password)
+3. Open `Ubuntu 20.04 LTS`, you will see the following console. Please set up your WSL, see [Set up a WSL development environment](https://learn.microsoft.com/en-us/windows/wsl/setup/environment#set-up-your-linux-username-and-password)
 
 <img src="./pics/install_wsl_02.png" alt="set up wsl Ubuntu-20.04" width="50%">
 
-3. Once you have finished setting up, you should see the following welcome message:
+4. Once you have finished setting up, you should see the following welcome message:
 
 <img src="./pics/install_wsl_03.png" alt="finish wsl Ubuntu-20.04" width="50%">
 
