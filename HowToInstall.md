@@ -63,13 +63,17 @@ As described in OpenFOAM documentation, complete the following:
 2. Unzip the source code file
 3. Copy the `carbonfly` folder to the Rhino 8 script path: `%AppData%\McNeel\Rhinoceros\8.0\scripts`
 
+> Note: If you have just installed Rhino, the `scripts` folder may not yet exist. Please manually create a new `scripts` folder at this path `%AppData%\McNeel\Rhinoceros\8.0`.
+
 <img src="./pics/manual_installation_copy_rhino_8_script.png" alt="manual installation copy rhino 8 script" width="50%">
 
 4. Copy the `Carbonfly` folder (under `grasshopper/UserObjects`) to the `%AppData%\Grasshopper\UserObjects`
 
+> Note: If you have just installed Rhino, the `Grasshopper` folder may not yet exist. Please run Grasshopper in your Rhino first. The folder will be created after the first run.
+
 <img src="./pics/manual_installation_copy_grasshopper_user_objects.png" alt="manual installation copy grasshopper user objects" width="50%">
 
-5. Start Rhino and Grasshopper. You should now see Carbonfly in the tabs:
+5. Restart Rhino and Grasshopper. You should now see Carbonfly in the tabs:
 
 <img src="./pics/carbonfly_in_grasshopper.png" alt="manual installation copy grasshopper user objects" width="50%">
 
