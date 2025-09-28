@@ -269,6 +269,6 @@ Option 2: Simplified two patches window. Steady-state simulation (5000 iteration
 
 ### Example 03c
 
-Option 3: Single-side casement window. Steady-state simulation (5000 iterations). Results in ParaView:
+Option 3: Single-side casement window with a bounding box. Steady-state simulation (5000 iterations). Results in ParaView:
 
 ![Example 03c simulation result](./_pics/03c_simple_nat_vent_human_lod0_boundingbox_ParaView.png)
