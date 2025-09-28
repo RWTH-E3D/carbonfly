@@ -99,7 +99,7 @@ def _field_block_text(spec: Any) -> str:
         lines.append(_write_value_line("value", d.get("value")))
 
     elif typ == "totalPressure":
-        lines.append(_write_value_line("p0", "$internalField"))
+        lines.append(_write_value_line("p0", d.get("p0")))
         lines.append(_write_value_line("value", d.get("value")))
 
     elif typ == "fixedFluxPressure":
