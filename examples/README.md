@@ -228,6 +228,8 @@ For natural ventilation (through window), there are a few different ways to simu
   - White (bounding box):
     - T: 285.15 K
 
+> Note: Option 3 will significantly increase the required simulation time, as the mesh size is much larger. Additionally, nearby buildings and vegetation will affect the external wind field.
+
 <table style="table-layout: fixed; width: 100%;">
   <tr>
     <td align="center" valign="top">
