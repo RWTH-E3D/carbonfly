@@ -49,8 +49,13 @@ See our [Examples](./examples):
   </tr>
   <tr>
     <td>Natural ventilation through open windows</td>
-    <td>⏳ Planned</td>
-    <td>-</td>
+    <td>✅ Done (v0.3.0)</td>
+    <td>
+      See our <a href="./examples" alt="Examples" target="_blank">Examples</a>: 
+      1) Transient: <code>Carbonfly Dynamic Window</code> based on <code>pressureInletOutletVelocity</code>;
+      2) Steady-state: simplified split window (top/bottom);
+      3) Bounding box (indoor + outdoor).
+    </td>
   </tr>
   <tr>
     <td rowspan="3">Manikins with different Levels of Detail (LOD)</td>
