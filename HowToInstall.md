@@ -12,13 +12,13 @@
 
 ### Step 1: Install WSL
 
-Install WSL 2 with Ubuntu-20.04 (should also work with Ubuntu-22.04, not tested) in a terminal window (e.g. PowerShell), see [WSL Documentation - How to install Linux on Windows with WSL](https://learn.microsoft.com/en-us/windows/wsl/install):
+Install WSL 2 with Ubuntu-20.04 (should also work with Ubuntu-22.04, not tested) in a terminal window (e.g. PowerShell), also see [WSL Documentation - How to install Linux on Windows with WSL](https://learn.microsoft.com/en-us/windows/wsl/install):
 
 1. `wsl --install -d Ubuntu-20.04`
 
 <img src="./pics/install_wsl_01.png" alt="install wsl Ubuntu-20.04" width="50%">
 
-2. Open `Ubuntu 20.04 LTS`, you will see the following console. Please set up your WSL, see [Set up a WSL development environment](https://learn.microsoft.com/en-us/windows/wsl/setup/environment#set-up-your-linux-username-and-password)
+2. Open `Ubuntu 20.04 LTS`, you will see the following console. Please set up your WSL, also see [Set up a WSL development environment](https://learn.microsoft.com/en-us/windows/wsl/setup/environment#set-up-your-linux-username-and-password)
 
 <img src="./pics/install_wsl_02.png" alt="set up wsl Ubuntu-20.04" width="50%">
 
@@ -30,7 +30,7 @@ Install WSL 2 with Ubuntu-20.04 (should also work with Ubuntu-22.04, not tested)
 
 ### Step 2: Install OpenFOAM v10
 
-Install OpenFOAM v10 in WSL - Ubuntu 20.04 LTS (should be able to find it in the Windows menu, with an orange icon), see [Download v10 | Ubuntu](https://openfoam.org/download/10-ubuntu/):
+Install OpenFOAM v10 in WSL - Ubuntu 20.04 LTS (should be able to find it in the Windows menu, with an orange icon), also see [Download v10 | Ubuntu](https://openfoam.org/download/10-ubuntu/):
 
 1. `sudo sh -c "wget -O - https://dl.openfoam.org/gpg.key > /etc/apt/trusted.gpg.d/openfoam.asc"`
 2. `sudo add-apt-repository http://dl.openfoam.org/ubuntu`
@@ -89,7 +89,7 @@ Coming soon...
 
 Although [ParaView](https://www.paraview.org/) (for post-processing) should be automatically installed in the WSL environment during OpenFOAM v10 installation, it is still recommended to install an additional [ParaView](https://www.paraview.org/) instance in the Windows environment. This allows for more convenient viewing of results and post-processing after simulations.
 
-After simulation, simply double-click the automatically generated `.foam` file to open ParaView and view simulation results for post-processing:
+After simulation, simply double-click the automatically generated `.foam` file in the Carbonfly case folder (see [Examples](./examples)) to open ParaView and view simulation results for post-processing:
 
 <img src="./pics/post_processing_paraview_01.png" alt="open results in paraview" width="50%">
 
