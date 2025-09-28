@@ -179,9 +179,9 @@ Steady-state simulation (2000 iterations). Results in ParaView:
 
 [Back to top ↥](#quick-navigation)
 
-## Example 02
+## Example 03
 
-A simple mechanically ventilated (mixing ventilation) room with a manikin (LOD 0):
+A simple naturally ventilated room with a manikin (LOD 0):
 
 - White: Walls & floor & ceiling
   - T: 295.15 K
