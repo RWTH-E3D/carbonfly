@@ -4,7 +4,8 @@
 
 1. Add Gagge two-node thermal comfort model (standing & sitting)
 2. Add Gagge two-node sleep model
-3. Add Carbonfly logo
+3. Add Example 04
+4. Add Carbonfly logo
 
 ## v0.3.0 (2025-09-28)
 
