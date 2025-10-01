@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.4.0 (2025-10-01)
+
+1. Add Gagge two-node thermal comfort model (standing & sitting)
+2. Add Gagge two-node sleep model
+3. Add Carbonfly logo
+
 ## v0.3.0 (2025-09-28)
 
 1. Add Carbonfly Dynamic Window for natural ventilation
