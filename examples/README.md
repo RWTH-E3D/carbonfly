@@ -14,6 +14,8 @@ Below is a collection of examples with descriptions to help you get started quic
   - [Transient with dynamic window boundary condition](#example-03a): `03a_simple_nat_vent_human_lod0_transient.gh`
   - [Steady-state with simplified two patches window](#example-03b): `03b_simple_nat_vent_human_lod0_steadystate.gh`
   - [Single-side casement window with a bounding box](#example-03c): `03c_simple_nat_vent_human_lod0_boundingbox.gh`
+- Example 04: [A simple mechanically ventilated (mixing ventilation) room with two manikins (LOD 0) using Gagge two-node thermal comfort models](#example-04)
+  - `04_thermal_comfort_Gagge_two_node_model.gh`
 
 ## Example 01
 
@@ -280,5 +282,47 @@ Steady-state simulation (5000 iterations). Results in ParaView:
 Or transient (600 s):
 
 ![Example 03c simulation result transient](./_pics/03c_simple_nat_vent_human_lod0_boundingbox_transient_ParaView.gif)
+
+[Back to top ↥](#quick-navigation)
+
+## Example 04
+
+A simple mechanically ventilated (mixing ventilation) room with two manikins (LOD 0) using Gagge two-node thermal comfort models:
+
+- White: Walls and floor
+  - T: 295.15 K
+- Green: Air inlet
+  - U: 0.05 m/s
+  - T: 293.15 K
+  - CO2: 400 ppm
+- Dark orange: Air outlet
+- Blue: Ceiling (excluding air inlets and outlets)
+  - T: 295.15 K
+- Dark gray: A sleeping manikin with Level of Detail of 0
+  - T: 306.821345 K (skin temperature calculated from `Gagge two-node model (sleep)`)
+    - Height: 175 cm
+    - Weight: 80 kg
+    - BSA: 1.95606 m2
+    - Thickness quilt: 3 cm
+  - Mouth of the sleeping manikin
+    - U: 7.2 L/min
+    - T: 310.182409 K (core temperature calculated from `Gagge two-node model (sleep)`)
+    - CO2: 46000 ppm (0.0055 L/s CO2)
+- Light gray: A sitting manikin with Level of Detail of 0
+  - T: 307.59 K (skin temperature calculated from `Gagge two-node model`)
+    - Height: 175 cm
+    - Weight: 75 kg
+    - BSA: 1.903137 m2
+  - Mouth of the sitting manikin
+    - U: 7.2 L/min
+    - T: 310.04 K (core temperature calculated from `Gagge two-node model`)
+    - CO2: 46000 ppm (0.0055 L/s CO2)
+- Internal Fields
+  - T: 300 K
+  - CO2: 1000 ppm
+
+![Example 04 Room Model](./_pics/04_simple_mech_vent_human_lod0_Gagge_thermal_comfort_Rhino.png)
+
+
 
 [Back to top ↥](#quick-navigation)
