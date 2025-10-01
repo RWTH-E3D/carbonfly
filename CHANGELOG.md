@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.4.1 (2025-10-01)
+
+1. Change the license to LGPL v3.0, no functional changes
+
 ## v0.4.0 (2025-10-01)
 
 1. Add Gagge two-node thermal comfort model (standing & sitting)
