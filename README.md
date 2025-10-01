@@ -93,7 +93,7 @@ Coming soon...
 
 ## License
 
-Carbonfly is a free, open-source plugin licensed under [AGPL-3.0](./LICENSE).
+Carbonfly is a free, open-source plugin licensed under [LGPL-3.0](./LICENSE).
 
 There are several ways you can contribute:
 
