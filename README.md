@@ -11,6 +11,8 @@
 
 A lightweight, easy-to-use Python library and toolbox for indoor CO2 CFD simulation in Grasshopper, based on OpenFOAM and the Windows Subsystem for Linux (WSL).
 
+<img src="./pics/carbonfly_logo.svg" width="10%" alt="Example 02b residuals" />
+
 ## Quick Navigation
 
 - [Key Features](#key-features)
@@ -58,17 +60,22 @@ See our [Examples](./examples):
     </td>
   </tr>
   <tr>
-    <td rowspan="3">Manikins with different Levels of Detail (LOD)</td>
+    <td rowspan="2">Manikins with different Levels of Detail (LOD)</td>
     <td>✅ Done (v0.2.0)</td>
     <td>LOD0 Manikin is a simplified human model focused on CO2 dispersion. It is represented by straight lines and basic geometric volumes, without body part subdivision. Breathing is simplified to mouth breathing only, with no nasal passage. This abstraction is well suited for multi-occupant scenarios where reduced CFD mesh size and computational cost are essential.</td>
   </tr>
   <tr>
     <td>⏳ Planned</td>
-    <td>LOD1</td>
+    <td>LOD1/2/...</td>
+  </tr>
+  <tr>
+    <td rowspan="2">Thermal comfort models</td>
+    <td>✅ Done (v0.4.0)</td>
+    <td>Gagge two-node model for standing, sitting, and sleeping positions (based on <a href="https://github.com/CenterForTheBuiltEnvironment/pythermalcomfort" alt="pythermalcomfort link">pythermalcomfort</a>)</td>
   </tr>
   <tr>
     <td>⏳ Planned</td>
-    <td>LOD2</td>
+    <td>Support more models</td>
   </tr>
 </table>
 
