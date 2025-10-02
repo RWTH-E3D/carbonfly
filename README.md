@@ -89,8 +89,6 @@ See [How to install](./HowToInstall.md)
 
 See [Instructions for Developers](./InstructionsForDevelopers.md)
 
-[Back to top ↥](#quick-navigation)
-
 ## License
 
 Carbonfly is a free, open-source plugin licensed under [LGPL-3.0](./LICENSE).
@@ -104,6 +102,7 @@ There are several ways you can contribute:
 
 Copyright (C) 2025 Qirui Huang, [Institute for Energy Efficiency and Sustainable Building (E3D), RWTH Aachen University](https://www.e3d.rwth-aachen.de/go/id/iyld/?lidx=1)
 
+[Back to top ↥](#quick-navigation)
 
 ## How to cite
 
