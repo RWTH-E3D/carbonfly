@@ -87,7 +87,7 @@ See [How to install](./HowToInstall.md)
 
 ## Instructions for Developers
 
-Coming soon...
+See [Instructions for Developers](./InstructionsForDevelopers.md)
 
 [Back to top ↥](#quick-navigation)
 
