@@ -323,6 +323,8 @@ A simple mechanically ventilated (mixing ventilation) room with two manikins (LO
 
 ![Example 04 Room Model](./_pics/04_simple_mech_vent_human_lod0_Gagge_thermal_comfort_Rhino.png)
 
+Transient simulation (0 - 600 s). Results in ParaView:
 
+![Example 03c simulation result transient](./_pics/04_simple_mech_vent_human_lod0_Gagge_thermal_comfort_ParaView.gif)
 
 [Back to top ↥](#quick-navigation)
