@@ -1,6 +1,5 @@
 # Carbonfly
 
-[![Downloads](https://img.shields.io/github/downloads/RWTH-E3D/carbonfly/total?label=Downloads)](https://github.com/RWTH-E3D/carbonfly/releases)&nbsp;
 [![Release](https://img.shields.io/github/v/release/RWTH-E3D/carbonfly?label=Release&color=4c8eda)](https://github.com/RWTH-E3D/carbonfly/releases)
 &nbsp;
 [![Platforms](https://img.shields.io/badge/Platforms-Rhino_8_&_Grasshopper-4c8eda)](https://www.rhino3d.com/en/)&nbsp;
