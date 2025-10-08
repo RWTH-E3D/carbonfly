@@ -75,3 +75,89 @@ def unit_scale_to_m(unit: str) -> float:
     if u == "cm": return 1e-2
     if u == "m":  return 1.0
     raise ValueError("unit must be 'mm'|'cm'|'m'")
+
+
+def co2_generation_rate(age: float, met: float, gender: str | None = None):
+    """
+    Get CO2 generation rate (L/s) based on mean body mass in each age group.
+    
+    Args:
+        age: Age in float.
+        met: Level of physical activity (met), met must be one of [1.0, 1.2, 1.4, 1.6, 2.0, 3.0, 4.0].
+        gender: "male", "female", None (default returns average for both genders).
+
+    Returns:
+        A dict contains
+            "mass" (mean body mass, kg), 
+            "BMR" (Basal Metabolic Rate, MJ/day), 
+            "CO2" (CO2 generation rate, L/s)
+    
+    Source:
+        Persily and De Jonge, Carbon dioxide generation rates for building
+        occupants, Indoor Air 27 (5) (2017) 868–879. doi:10.1111/ina.12383
+
+    """
+    met_levels = [1.0, 1.2, 1.4, 1.6, 2.0, 3.0, 4.0]
+
+    # Data is grouped by [min_age, max_age, mass, BMR, CO2 list...]
+    CO2_generation_table = {
+        "male": [
+            (None, 1,   8.0, 1.86, [0.0009,0.0011,0.0013,0.0014,0.0018,0.0027,0.0036]),
+            (1, 3,     12.8, 3.05, [0.0015,0.0018,0.0021,0.0024,0.0030,0.0044,0.0059]),
+            (3, 6,     18.8, 3.90, [0.0019,0.0023,0.0026,0.0030,0.0038,0.0057,0.0075]),
+            (6, 11,    31.9, 5.14, [0.0025,0.0030,0.0035,0.0040,0.0050,0.0075,0.0100]),
+            (11, 16,   57.6, 7.02, [0.0034,0.0041,0.0048,0.0054,0.0068,0.0102,0.0136]),
+            (16, 21,   77.3, 7.77, [0.0037,0.0045,0.0053,0.0060,0.0075,0.0113,0.0150]),
+            (21, 30,   84.9, 8.24, [0.0039,0.0048,0.0056,0.0064,0.0080,0.0120,0.0160]),
+            (30, 40,   87.0, 7.83, [0.0037,0.0046,0.0053,0.0061,0.0076,0.0114,0.0152]),
+            (40, 50,   90.5, 8.00, [0.0038,0.0046,0.0054,0.0062,0.0077,0.0116,0.0155]),
+            (50, 60,   89.5, 7.95, [0.0038,0.0046,0.0054,0.0062,0.0077,0.0116,0.0154]),
+            (60, 70,   89.5, 6.84, [0.0033,0.0040,0.0046,0.0053,0.0066,0.0099,0.0133]),
+            (70, 80,   83.9, 6.57, [0.0031,0.0038,0.0045,0.0051,0.0064,0.0095,0.0127]),
+            (80, None, 76.1, 6.19, [0.0030,0.0036,0.0042,0.0048,0.0060,0.0090,0.0120]),
+        ],
+        "female": [
+            (None, 1,   7.7, 1.75, [0.0008,0.0010,0.0012,0.0014,0.0017,0.0025,0.0034]),
+            (1, 3,     12.3, 2.88, [0.0014,0.0017,0.0020,0.0022,0.0028,0.0042,0.0056]),
+            (3, 6,     18.3, 3.59, [0.0017,0.0021,0.0024,0.0028,0.0035,0.0052,0.0070]),
+            (6, 11,    31.7, 4.73, [0.0023,0.0027,0.0032,0.0037,0.0046,0.0069,0.0092]),
+            (11, 16,   55.9, 6.03, [0.0029,0.0035,0.0041,0.0047,0.0058,0.0088,0.0117]),
+            (16, 21,   65.9, 6.12, [0.0029,0.0036,0.0042,0.0047,0.0059,0.0089,0.0119]),
+            (21, 30,   71.9, 6.49, [0.0031,0.0038,0.0044,0.0050,0.0063,0.0094,0.0126]),
+            (30, 40,   74.8, 6.08, [0.0029,0.0035,0.0041,0.0047,0.0059,0.0088,0.0118]),
+            (40, 50,   77.1, 6.16, [0.0029,0.0036,0.0042,0.0048,0.0060,0.0090,0.0119]),
+            (50, 60,   77.5, 6.17, [0.0030,0.0036,0.0042,0.0048,0.0060,0.0090,0.0120]),
+            (60, 70,   76.8, 5.67, [0.0027,0.0033,0.0038,0.0044,0.0055,0.0082,0.0110]),
+            (70, 80,   70.8, 5.45, [0.0026,0.0032,0.0037,0.0042,0.0053,0.0079,0.0106]),
+            (80, None, 64.1, 5.19, [0.0025,0.0030,0.0035,0.0040,0.0050,0.0075,0.0101]),
+        ],
+    }
+
+    if age < 0 or age > 100:
+        raise ValueError("age must be between 0 and 100")
+    if met not in met_levels:
+        raise ValueError(f"met must be one of {met_levels}")
+    idx = met_levels.index(met)
+
+    def _find_one(g: str):
+        for lo, hi, mass, bmr, co2_list in CO2_generation_table[g]:
+            # lo/hi=None indicates no lower/upper limit.
+            if (lo is None or age >= lo) and (hi is None or age < hi):
+                return mass, bmr, co2_list[idx]
+        raise ValueError(f"No suitable age range found in the table {g} for {age}.")
+
+    if gender is None:
+        m_mass, m_bmr, m_co2 = _find_one("male")
+        f_mass, f_bmr, f_co2 = _find_one("female")
+        # get average
+        return {
+            "mass": (m_mass + f_mass) / 2,
+            "BMR": (m_bmr + f_bmr) / 2,
+            "CO2": (m_co2 + f_co2) / 2,
+        }
+    else:
+        gender = gender.lower()
+        if gender not in CO2_generation_table:
+            raise ValueError("gender must be one of {male,female}")
+        m, b, c = _find_one(gender)
+        return {"mass": m, "BMR": b, "CO2": c}
