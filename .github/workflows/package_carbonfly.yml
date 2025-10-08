@@ -1,0 +1,43 @@
+name: Package carbonfly source bundle
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Define zip name
+        id: name
+        run: |
+          ZIP="carbonfly_src_${GITHUB_REF_NAME}.zip"
+          echo "zip=${ZIP}" >> "$GITHUB_OUTPUT"
+
+      - name: Make zip
+        run: |
+          git archive \
+            --format=zip \
+            --output "${{ steps.name.outputs.zip }}" \
+            HEAD \
+            carbonfly \
+            grasshopper/UserObjects \
+            CHANGELOG.md \
+            HowToInstall.md \
+            LICENSE \
+            README.md
+
+      - name: Upload to GitHub Release
+        if: github.ref_type == 'tag'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ steps.name.outputs.zip }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
