@@ -115,6 +115,16 @@ def _field_block_text(spec: Any) -> str:
         lines.append(_write_value_line("Ta", d.get("Ta")))
         lines.append(_write_value_line("value", d.get("value")))
 
+    elif typ == "codedFixedValue":
+        lines.append(_write_value_line("value", d.get("value")))
+        lines.append(_write_value_line("name", d["name"]))
+        code_block = (d.get("code") or "").rstrip("\n")
+        if code_block:
+            lines.append("        code")
+        for cl in code_block.splitlines():
+            lines.append("        " + cl)
+
+
     # zeroGradient requires no extra keys
     return "\n".join(lines)
 

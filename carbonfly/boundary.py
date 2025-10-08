@@ -136,6 +136,60 @@ class FieldExternalWallHeatFluxTemperature:
 BoundaryType = Literal["inletVelocity", "outletPressure", "wall", "symmetry", "custom"]
 
 @dataclass
+class FieldDynamicRespiration:
+    """
+    Dynamic respiration velocity boundary for U using codedFixedValue (sine wave).
+
+    Inputs:
+        freq: breaths per minute, default: 12 breaths per minute (0.2 Hz)
+        minute_vent_L_min: respiration/exhaled airflow (L/min), default: 7.2 L/min
+        name: name of codedFixedValue (optional)
+    """
+    freq: float = 12.0
+    minute_vent_L_min: float = 7.2
+    name: str = "breathingSine"
+
+    def to_dict(self) -> Dict[str, Any]:
+        # L/min -> m^3/s
+        VE_m3_s = (self.minute_vent_L_min / 1000.0) / 60.0
+
+        # breaths per minute -> Hz
+        freq_hz = self.freq / 60
+
+        # OpenFOAM codedFixedValue
+        code = (
+f"""#{{
+    const fvPatch& p = patch();
+    const vectorField n = p.nf();
+    const scalar A = gSum(mag(p.Sf()));
+
+    // input
+    const scalar f  = {freq_hz}; // Hz ({self.freq} breaths/min)
+    const scalar VE = {VE_m3_s}; // m^3/s ({self.minute_vent_L_min} L/min)
+
+    // Amplitude U0 = (pi * VE) / A
+    const scalar U0 = constant::mathematical::pi * VE / A;
+
+    const scalar t  = this->db().time().value();
+    const scalar Un = U0 * sin(2.0 * constant::mathematical::pi * f * t);
+
+    vectorField V(p.size(), vector::zero);
+    forAll(V, i) {{ V[i] = n[i] * Un; }}
+
+    operator==(V);
+    fixedValueFvPatchVectorField::updateCoeffs();
+
+#}};"""
+        )
+
+        return {
+            "type": "codedFixedValue",
+            "value": "uniform (0 0 0)",
+            "name": self.name,
+            "code": code
+        }
+
+@dataclass
 class Boundary:
     region_name: str                   # e.g. "inlet_01" (from STL solid name)
     patch_name: Optional[str] = None   # Final patch name in OpenFOAM (defaults to region_name if None)
