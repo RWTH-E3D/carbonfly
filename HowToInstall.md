@@ -59,8 +59,8 @@ As described in OpenFOAM documentation, complete the following:
 
 #### Manual installation
 
-1. Download source code of latest release from [Releases](https://github.com/RWTH-E3D/carbonfly/releases)
-2. Unzip the source code file
+1. Download `.zip` file (or source code) of latest release from [Releases](https://github.com/RWTH-E3D/carbonfly/releases)
+2. Unzip the file
 3. Copy the `carbonfly` folder to the Rhino 8 script path: `%AppData%\McNeel\Rhinoceros\8.0\scripts`
 
 > Note: If you have just installed Rhino, the `scripts` folder may not yet exist. Please manually create a new `scripts` folder at this path `%AppData%\McNeel\Rhinoceros\8.0`.

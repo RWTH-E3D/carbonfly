@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.4.2 (2025-10-08)
+
+1. Add Instructions for Developers (Python library structure)
+
 ## v0.4.1 (2025-10-01)
 
 1. Change the license to LGPL v3.0, no functional changes
