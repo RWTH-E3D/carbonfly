@@ -18,7 +18,7 @@ jobs:
       - name: Define zip name
         id: name
         run: |
-          ZIP="carbonfly_src_${GITHUB_REF_NAME}.zip"
+          ZIP="carbonfly_${GITHUB_REF_NAME}.zip"
           echo "zip=${ZIP}" >> "$GITHUB_OUTPUT"
 
       - name: Make zip
