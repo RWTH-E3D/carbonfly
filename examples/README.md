@@ -16,6 +16,8 @@ Below is a collection of examples with descriptions to help you get started quic
   - [Single-side casement window with a bounding box](#example-03c): `03c_simple_nat_vent_human_lod0_boundingbox.gh`
 - Example 04: [A simple mechanically ventilated (mixing ventilation) room with two manikins (LOD 0) using Gagge two-node thermal comfort models](#example-04)
   - `04_thermal_comfort_Gagge_two_node_model.gh`
+- Example 05: [A simple mechanically ventilated (mixing ventilation) room with a manikin (LOD 0) using Dynamic Respiration](#example-05)
+  - `05_dynamic_respiration.gh`
 
 ## Example 01
 
@@ -325,6 +327,26 @@ A simple mechanically ventilated (mixing ventilation) room with two manikins (LO
 
 Transient simulation (0 - 600 s). Results in ParaView:
 
-![Example 03c simulation result transient](./_pics/04_simple_mech_vent_human_lod0_Gagge_thermal_comfort_ParaView.gif)
+![Example 04 simulation result transient](./_pics/04_simple_mech_vent_human_lod0_Gagge_thermal_comfort_ParaView.gif)
+
+[Back to top ↥](#quick-navigation)
+
+## Example 05
+
+A simple mechanically ventilated (mixing ventilation) room with a manikin (LOD 0) using Carbonfly Dynamic Respiration:
+
+- CO2 generation rate:
+  - Age: 28
+  - Met: 1.4 (standing light work)
+  - Gender: male
+  - Breathing flow rate: 7.2 L/min
+- Dynamic Respiration
+  - Frequency: 12 breaths per minute
+  - Breathing flow rate: 7.2 L/min
+  - Core temperature from Gagge's two-node model
+
+Transient simulation (0 - 120 s). Results in ParaView:
+
+![Example 05 simulation result transient](./_pics/05_dynamic_respiration_ParaView.gif)
 
 [Back to top ↥](#quick-navigation)
