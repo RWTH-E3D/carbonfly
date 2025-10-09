@@ -55,4 +55,48 @@ carbonfly/
 
 ## Grasshopper toolbox
 
-coming soon...
+### Structure
+
+```
+grasshopper/UserObjects/Carbonfly
+├─ 01:Create
+│  ├─ CreateCFCase        # Create Carbonfly Case
+│  └─ CreateCFGeometry    # Create Carbonfly Geometry
+│
+├─ 02:Boundary
+│  ├─ Body                # Manikin body
+│  ├─ DynamicRespiration  # Manikin dynamic respiration for transient simulation
+│  ├─ DynamicWindow       # Pressure-driven dynamic window for transient simulation
+│  ├─ InletVelocity       # For a constant inlet with a given velocity
+│  ├─ internalFields      # Initial field definitions
+│  ├─ Outlet              # Outlet condition
+│  └─ Wall                # Fixed wall (isothermal solid) condition
+│
+├─ 03:Recipe
+│  ├─ controlDict         # OpenFOAM controlDict settings
+│  ├─ fvSchemes           # OpenFOAM fvSchemes settings
+│  ├─ fvSolution          # OpenFOAM fvSolution settings
+│  │
+│  └─ residual control    # Preset residual control list
+│
+├─ 04:Solution
+│  ├─ blockMesh           # Run OpenFOAM blockMesh
+│  ├─ runFoam             # Run OpenFOAM
+│  ├─ snappyHexMesh       # Run OpenFOAM snappyHexMesh
+│  ├─ surfaceFeatures     # Run OpenFOAM surfaceFeatures
+│  │
+│  ├─ checkMesh           # Run OpenFOAM checkMesh
+│  └─ foamMonitor         # Run OpenFOAM foamMonitor
+│
+└─ 05:Util
+   ├─ BSA (Du Bois)       # Calculate Body Surface Area using Du Bois' Formula
+   ├─ CO2 generation rate # Get CO2 generation rate (L/s)
+   ├─ Gagge two-node model  # Gagge Two-node model of human temperature regulation
+   ├─ Gagge two-node model (sleep)  # Adaption of the Gagge model for sleep thermal environment
+   │
+   ├─ Manikin LOD 0       # Manikin model Level of Detail 0
+   │
+   └─ Carbonfly Met List  # Preset physical activity (met) list
+```
+
+The scripts for each GH User Object are saved in `carbonfly/grasshopper/XXXXXX.py`.
