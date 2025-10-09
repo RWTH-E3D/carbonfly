@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.5.0 (2025-10-09)
+
+1. Add CO2 generation rate, based on A. Persily, L. De Jonge, Carbon dioxide generation rates for building occupants, Indoor Air 27 (5) (2017) 868–879. doi:10.1111/ina.12383
+2. Add Dynamic Respiration boundary condition
+3. Add Example 05
+
 ## v0.4.2 (2025-10-08)
 
 1. Add Instructions for Developers (Python library structure)
