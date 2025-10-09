@@ -18,6 +18,7 @@ A lightweight, easy-to-use Python library and toolbox for indoor CO2 CFD simulat
 - [Key Features](#key-features)
 - [Roadmap](#roadmap)
 - [How to install?](#how-to-install)
+- [Documentation](#documentation)
 - [Instructions for Developers](#instructions-for-developers)
 - [License](#license)
 - [How to cite](#how-to-cite)
@@ -30,7 +31,7 @@ A lightweight, easy-to-use Python library and toolbox for indoor CO2 CFD simulat
 4. **Fast what-if studies**: Change flow rate, supply temperature, CO2 concentration, and diffuser placement and quickly rerun for comparison.
 5. **Visualization-ready outputs**: Exports a standard OpenFOAM case for viewing CO2/velocity/temperature/pressure etc. in ParaView.
 
-See our [Examples](./examples):
+**See our [Examples](./examples):**
 
 <img src="./pics/carbonfly_overview.gif" width="50%" alt="Carbonfly workflow overview" />
 
@@ -90,6 +91,10 @@ See our [Examples](./examples):
 ## How to install?
 
 See [How to install](./HowToInstall.md)
+
+## Documentation
+
+See [Documentation](./documentation)
 
 ## Instructions for Developers
 
