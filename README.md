@@ -1,5 +1,6 @@
 # Carbonfly
 
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/RWTH-E3D/carbonfly/total)
 [![Release](https://img.shields.io/github/v/release/RWTH-E3D/carbonfly?label=Release&color=4c8eda)](https://github.com/RWTH-E3D/carbonfly/releases)
 &nbsp;
 [![Platforms](https://img.shields.io/badge/Platforms-Rhino_8_&_Grasshopper-4c8eda)](https://www.rhino3d.com/en/)&nbsp;
@@ -75,6 +76,12 @@ See our [Examples](./examples):
   <tr>
     <td>⏳ Planned</td>
     <td>Support more models</td>
+  </tr>
+  <tr>
+    <td>Dynamic respiration</td>
+    <td>✅ Done (v0.5.0)</td>
+    <td>Time-varying mouth boundary for <code>U</code> via <code>codedFixedValue</code> (sine). Parameterized by breathing frequency and average breathing flow rate (L/min). Amplitude is computed from target ventilation and patch area.
+    </td>
   </tr>
 </table>
 
