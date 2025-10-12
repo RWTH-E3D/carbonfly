@@ -189,6 +189,71 @@ f"""#{{
             "code": code
         }
 
+
+@dataclass
+class FieldCO2FromPatchAverage:
+    """
+    Set CO2 at this patch to the area-weighted average CO2 on another patch.
+    Typical use: AC outlet recirculation -> sample from AC inlet.
+
+    Parameters
+    ----------
+    source_patch : str
+        Name of the patch to sample CO2 from (e.g., "ac_inlet").
+    name : str
+        Name of the codedFixedValue object (OpenFOAM requires a name).
+    """
+    source_patch: str
+    name: str = "co2FromPatchAvg"
+
+    def to_dict(self) -> Dict[str, Any]:
+        code = f"""#{{
+
+    // find source patch
+    const label srcPid = this->patch().boundaryMesh().findPatchID("{self.source_patch}");
+    if (srcPid < 0)
+    {{
+        FatalErrorInFunction
+            << "Cannot find source patch '{self.source_patch}'" << nl
+            << abort(FatalError);
+    }}
+
+    // CO2 volume field
+    const volScalarField& CO2 = this->db().lookupObject<volScalarField>("CO2");
+
+    // source patch field
+    const fvPatchScalarField& srcPf = CO2.boundaryField()[srcPid];
+    const scalarField srcVals(srcPf);   // safe copy
+
+    if (srcVals.empty())
+    {{
+        FatalErrorInFunction
+            << "Source patch '{self.source_patch}' has zero faces" << nl
+            << abort(FatalError);
+    }}
+
+    // area-weighted average
+    const fvPatch& srcPatch = CO2.mesh().boundary()[srcPid];
+    const scalarField A(mag(srcPatch.Sf()));
+
+    const scalar num = gSum(srcVals * A);
+    const scalar den = gSum(A);
+    const scalar avgCO2 = (den > SMALL) ? (num/den) : (gSum(srcVals)/srcVals.size());
+
+    // assign uniform value to this patch
+    operator==(avgCO2);
+    fixedValueFvPatchScalarField::updateCoeffs();
+
+#}};"""
+
+        return {
+            "type": "codedFixedValue",
+            "value": "$internalField",
+            "name": self.name,
+            "code": code,
+        }
+
+
 @dataclass
 class Boundary:
     region_name: str                   # e.g. "inlet_01" (from STL solid name)
