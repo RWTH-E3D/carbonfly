@@ -8,6 +8,7 @@ Carbonfly consists of two key components:
 ```
 carbonfly (GitHub Repo)/
 ├─ carbonfly/              # Carbonfly Python library
+├─ documentation/          # Carbonfly toolbox documentation
 ├─ examples/               # Examples
 ├─ grasshopper/            # Carbonfly Grasshopper toolbox
 │  ├─ UserObjects/         # Grasshopper User Objects
