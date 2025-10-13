@@ -1,14 +1,18 @@
-# Carbonfly
+# Carbonfly Installation & Update
+
+<!-- TOC -->
+* [Carbonfly Installation & Update](#carbonfly-installation--update)
+  * [How to install?](#how-to-install)
+    * [Step 1: Install WSL](#step-1-install-wsl)
+    * [Step 2: Install OpenFOAM v10](#step-2-install-openfoam-v10)
+    * [Step 3: Install Carbonfly](#step-3-install-carbonfly)
+      * [Manual installation](#manual-installation)
+      * [Installer](#installer)
+    * [Step 4: Install ParaView (optional)](#step-4-install-paraview-optional)
+  * [How to update Carbonfly?](#how-to-update-carbonfly)
+<!-- TOC -->
 
 ## How to install?
-
-- [Step 1: Install WSL](#step-1-install-wsl)
-- [Step 2: Install OpenFOAM v10](#step-2-install-openfoam-v10)
-- [Step 3: Install Carbonfly](#step-3-install-carbonfly)
-  - [Manual installation](#manual-installation)
-  - [Installer](#installer)
-- [Step 4: Install ParaView (optional)](#step-4-install-paraview-optional)
-
 
 ### Step 1: Install WSL
 
@@ -96,3 +100,13 @@ After simulation, simply double-click the automatically generated `.foam` file i
 <img src="./pics/post_processing_paraview_02.png" alt="post processing in paraview" width="100%">
 
 [Back to top ↥](#carbonfly)
+
+## How to update Carbonfly?
+
+1. Close Rhino and Grasshopper. 
+
+2. Download the latest `.zip` from [Releases](https://github.com/RWTH-E3D/carbonfly/releases). 
+
+3. Replace the old folders with the new ones:
+   - Delete **`%AppData%\McNeel\Rhinoceros\8.0\scripts\carbonfly`** and copy in the new `carbonfly` folder.
+   - Delete **`%AppData%\Grasshopper\UserObjects\Carbonfly`** and copy in the new `Carbonfly` folder from `grasshopper/UserObjects`.
