@@ -98,6 +98,10 @@ A lightweight, easy-to-use Python library and toolbox for indoor CO2 CFD simulat
 
 See [How to Install & Update](./HowToInstall.md)
 
+## Examples
+
+See [Examples](./examples)
+
 ## Documentation
 
 See [Documentation](./documentation)
