@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.6.0 (2025-10-13)
+
+1. Add Recirculated Supply & Return
+2. Add Example 06
+3. Update documentation
+
 ## v0.5.0 (2025-10-09)
 
 1. Add CO2 generation rate, based on A. Persily, L. De Jonge, Carbon dioxide generation rates for building occupants, Indoor Air 27 (5) (2017) 868–879. doi:10.1111/ina.12383

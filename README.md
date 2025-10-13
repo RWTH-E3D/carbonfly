@@ -84,6 +84,12 @@ A lightweight, easy-to-use Python library and toolbox for indoor CO2 CFD simulat
     <td>Time-varying mouth boundary for <code>U</code> via <code>codedFixedValue</code> (sine). Parameterized by breathing frequency and average breathing flow rate (L/min). Amplitude is computed from target ventilation and patch area.
     </td>
   </tr>
+  <tr>
+    <td>Recirculated supply & return</td>
+    <td>✅ Done (v0.6.0)</td>
+    <td>Paired boundaries for internal (no-fresh-air) air recirculation, applicable to various devices, e.g., split AC indoor units for heating or cooling without fresh air input. The CO2 concentration of the supply air is equal to that of the return air (dynamic).
+    </td>
+  </tr>
 </table>
 
 [Back to top ↥](#quick-navigation)
