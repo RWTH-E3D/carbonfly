@@ -108,5 +108,5 @@ After simulation, simply double-click the automatically generated `.foam` file i
 2. Download the latest `.zip` from [Releases](https://github.com/RWTH-E3D/carbonfly/releases). 
 
 3. Replace the old folders with the new ones:
-   - Delete **`%AppData%\McNeel\Rhinoceros\8.0\scripts\carbonfly`** and copy in the new `carbonfly` folder.
-   - Delete **`%AppData%\Grasshopper\UserObjects\Carbonfly`** and copy in the new `Carbonfly` folder from `grasshopper/UserObjects`.
+   - Delete `%AppData%\McNeel\Rhinoceros\8.0\scripts\carbonfly` and copy in the new `carbonfly` folder.
+   - Delete `%AppData%\Grasshopper\UserObjects\Carbonfly` and copy in the new `Carbonfly` folder from `grasshopper/UserObjects`.
