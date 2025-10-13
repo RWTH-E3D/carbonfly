@@ -18,6 +18,8 @@ Below is a collection of examples with descriptions to help you get started quic
   - `04_thermal_comfort_Gagge_two_node_model.gh`
 - Example 05: [A simple mechanically ventilated (mixing ventilation) room with a manikin (LOD 0) using Dynamic Respiration](#example-05)
   - `05_dynamic_respiration.gh`
+- Example 06: [A simple room with split AC indoor unit and a manikin (LOD 0) using Dynamic Respiration](#example-06)
+  - `06_split_ac_recirc_transient.gh`
 
 ## Example 01
 
@@ -348,5 +350,38 @@ A simple mechanically ventilated (mixing ventilation) room with a manikin (LOD 0
 Transient simulation (0 - 120 s). Results in ParaView:
 
 ![Example 05 simulation result transient](./_pics/05_dynamic_respiration_ParaView.gif)
+
+[Back to top ↥](#quick-navigation)
+
+## Example 06
+
+A simple room with split AC indoor unit and a manikin (LOD 0) using Dynamic Respiration:
+
+- Green: Recirculated supply to the room. The CO2 concentration of the supply air is equal to that of the return air.
+- Yellow: Recirculated return from the room. Paired with recirculated supply.
+- Orange: Door bottom gap. Small leakage opening to relieve pressure and avoid a perfectly airtight room
+
+![Example 06 Room Model](./_pics/06_split_ac_recirc_transient_Rhino.png)
+
+Transient simulation (0 - 180 s). Results in ParaView:
+
+<table style="table-layout: fixed; width: 100%;">
+  <tr>
+    <td align="center" valign="top">
+      <img src="./_pics/06_split_ac_recirc_transient_CO2_ParaView.gif" width="100%" alt="Example 06 CO2" />
+      <br/>
+      <sub>
+        CO2
+      </sub>
+    </td>
+    <td align="center" valign="top">
+      <img src="./_pics/06_split_ac_recirc_transient_temperature_ParaView.gif" width="100%" alt="Example 06 air temperature" />
+      <br/>
+      <sub>
+        Air temperature
+      </sub>
+    </td>
+  </tr>
+</table>
 
 [Back to top ↥](#quick-navigation)
