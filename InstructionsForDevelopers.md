@@ -71,6 +71,8 @@ grasshopper/UserObjects/Carbonfly
 │  ├─ InletVelocity       # For a constant inlet with a given velocity
 │  ├─ internalFields      # Initial field definitions
 │  ├─ Outlet              # Outlet condition
+│  ├─ RecircReturn        # Recirculated return from the room. Pair with RecircSupply.
+│  ├─ RecircSupply        # Recirculated supply to the room. Pair with RecircReturn.
 │  └─ Wall                # Fixed wall (isothermal solid) condition
 │
 ├─ 03:Recipe
