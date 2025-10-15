@@ -6,7 +6,7 @@ carbonfly
     based on OpenFOAM and WSL
 
 - Author: Qirui Huang
-- License: AGPL-3.0
+- License: LGPL-3.0
 - Website: https://github.com/RWTH-E3D/carbonfly
 """
 
