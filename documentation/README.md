@@ -392,7 +392,7 @@ Run *foamMonitor*, live monitoring tool to track residuals during simulation.
 
 Calculate Body Surface Area (BSA) using Du Bois' Formula:
 
-$\rm BSA \; (m^2)  = 0.007184 \cdot Height \; (cm)^{0.725} \cdot Weight \; (kg)^{0.425}$
+$\rm BSA (m^2)  = 0.007184 \cdot Height (cm)^{0.725} \cdot Weight (kg)^{0.425}$
 
 > Source: D. Du Bois, CLINICAL CALORIMETRY: TENTH PAPER A FORMULA TO ESTIMATE THE APPROXIMATE SURFACE AREA IF HEIGHT AND WEIGHT BE KNOWN, Archives of Internal Medicine XVII (6_2) (1916) 863. doi:10.1001/archinte.1916.00080130010002
 
@@ -506,15 +506,15 @@ Create a manikin with Level of Detail of 0.
 | `unit` *(str)*: "mm" (default), "cm", "m", unit setting in Rhino                                                         | `Body` *(Surface)*: Collection of manikin body surfaces                                 |
 | `width` *(float)*: Width of the manikin model                                                                            | `Mouth` *(Surface)*: Collection of manikin mouth surfaces                               |
 | `height` *(float)*: Height of the manikin model                                                                          | `Breathing_U` *(float)*: Breathing velocity (for simplified constant exhalation) in m/s |
-| `StV_height` *(float)*: Stomion (mouth) to vertex height, default: 17 cm$^*$                                             |                                                                                         |
+| `StV_height` *(float)*: Stomion (mouth) to vertex height, default: 17 cm *                                               |                                                                                         |
 | `activity` *(str)*: The level of activity: "light" (default) / "medium" / "heavy", affects the size of the mouth opening |                                                                                         |
 | `breathing_flow_rate` *(float)*: Average breathing flow rate in L/min, default: 7.2 L/min                                |                                                                                         |
-| `mouth_scaling` *(float)*: Mouth opening scaling factor: 1 - 5, default: 4$^{**}$                                        |                                                                                         |
+| `mouth_scaling` *(float)*: Mouth opening scaling factor: 1 - 5, default: 4 **                                            |                                                                                         |
 | `angle` *(float)*: Rotation angle in radians of the manikin model                                                        |                                                                                         |
 
-> $^*$For reference: 1) Adult: ~16-17 cm (females) / ~17-18 cm (males); 2) Children (6–12 years): ~12-15 cm
+> *For reference: 1) Adult: ~16-17 cm (females) / ~17-18 cm (males); 2) Children (6–12 years): ~12-15 cm
 > 
-> $^{**}$A larger scale factor increases the mouth's opening area, reducing velocity while maintaining flow rate, thereby simplifying the mesh.
+> **A larger scale factor increases the mouth's opening area, reducing velocity while maintaining flow rate, thereby simplifying the mesh.
 
 [Back to top ↥](#carbonfly-toolbox-documentation)
 
