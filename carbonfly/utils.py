@@ -14,6 +14,9 @@ carbonfly
 """
 Utility functions for generating OpenFOAM-compatible file structures.
 """
+import math
+from typing import Optional
+
 
 def foam_header(
     object_name: str,
@@ -161,3 +164,175 @@ def co2_generation_rate(age: float, met: float, gender: str | None = None):
             raise ValueError("gender must be one of {male,female}")
         m, b, c = _find_one(gender)
         return {"mass": m, "BMR": b, "CO2": c}
+
+
+def _cpe_for_area(area_m2, cpe1, cpe10):
+    """
+    logarithmic interpolation between 1 m^2 and 10 m^2.
+    """
+    A = max(1e-9, area_m2)
+    if A <= 1.0:
+        return cpe1
+    if A >= 10.0:
+        return cpe10
+    t = math.log10(A)  # log10 from 1 to 10 maps to 0..1
+    return cpe1 + t * (cpe10 - cpe1)
+
+def _hd_bucket(h_over_d):
+    """
+    Map to one of: '0.25' (for h/d ≤ 0.25), '1', '5'.
+    """
+    if h_over_d <= 0.25:
+        return "0.25"
+    return "1" if h_over_d < 3.0 else "5"
+
+def _lookup_cpe(zone, h_over_d, table):
+    z = zone.upper().strip()
+    if z not in ("A", "B", "C", "D", "E"):
+        raise ValueError("zone must be A/B/C/D/E")
+    key = (z, _hd_bucket(h_over_d))
+    if key not in table:
+        raise KeyError(f"No Cpe for zone={z}, h/d bucket={key[1]}")
+    return table[key]
+
+def wind_pressure_en1991(
+    vb0: float,
+    z: float,
+    h: float,
+    d: float,
+    window_size: float,
+    zone: str,
+    terrain: Optional[int] = 4,
+    c_dir: Optional[float] = 1.0,
+    c_season: Optional[float] = 1.0,
+    c0: Optional[float] = 1.0,
+    rho: Optional[float] = 1.25,
+    k_i: Optional[float] = 1.0
+) -> dict:
+    """
+    Computes peak and surface wind pressure for vertical walls of rectangular plan buildings (h/d <=5 and height <= 200m), based on DIN EN 1991-1-4:2010-12.
+
+    Notes:
+        For other building types, please see DIN EN 1991-1-4:2010-12.
+
+    Args:
+        vb0: fundamental value of the basic wind velocity v_b,0 [m/s] (from National Annex map, 10 m, terrain II, 50 yr)
+        z: height above ground level of the measured/evaluated point [m]
+        h: height of the building [m]
+        d: length of the building [m]
+        window_size: window size in [m^2]
+        zone: External pressure zones, A/B/C on side/roof edges along the flow, D windward face, and E leeward face. Schematic (Fig. 7.5) see below:
+            Top view:
+                           <- - - d (length)  - ->
+                           -----------------------     ^
+                           |                     |     |
+                wind --> D |                     | E   b (width)
+                           |                     |     |
+                           -----------------------     -
+                D = windward face (positive pressure / stagnation)
+                E = leeward face (negative pressure / wake suction)
+            Side view:
+                           <- - - d (length)  - ->
+                           -----------------------     ^
+                           |   |         |       |     |
+                wind -->   | A |    B    |   C   |     | h (height)
+                           |___|_________|_______|     _
+                           <- - - e - - ->
+                               <- 4/5 e ->
+                           Where: e = b or 2h, whichever is smaller
+                A: leading corner band (strongest suction)
+                B: intermediate edge band
+                C: outer side/roof band
+        terrain: terrain type, 0/1/2/3/4, default: 4, corresponding to Type 0/I/II/III/IV:
+            0: Sea, coastal area exposed to the open sea.
+            1: Lakes or area with negligible vegetation and without obstacles.
+            2: Area with low vegetation such as grass and isolated obstacles (trees, buildings) with separations of at least 20 obstacle heights.
+            3: Area with regular cover of vegetation or buildings or with isolated obstacles with separations of maximum 20 obstacle heights (such as villages, suburban terrain, permanent forest).
+            4: Area in which at least 15 % of the surface is covered with buildings and their average height exceeds 15 m.
+        c_dir: directional factor, for various wind directions may be found in the National Annex. The recommended value is 1.0.
+        c_season: season factor, may be given in the National Annex. The recommended value is 1.0.
+        c0: orography factor, taken as 1.0 unless otherwise specified. Note: Information on c0 may be given in the National Annex. If the orography is accounted for in the basic wind velocity, the recommended value is 1.0.
+        rho: air density in kg/m3. The default value is 1.25 kg/m3.
+        k_i: turbulence factor. The value of k_i may be given in the National Annex. The recommended value for k_i is 1.0.
+
+    Returns:
+      {'we': wind pressure on the external surface [Pa],
+       'cpe': external pressure coefficients for vertical walls of rectangular plan buildings [-],
+       'qp': peak velocity pressure [Pa],
+       'vm': mean wind speed [m/s],
+       'Iv': turbulence intensity,
+       'cr': roughness factor,
+       'vb': basic wind velocity [m/s]}
+    """
+    if z > 200:
+        raise ValueError("z must be smaller than 200 m")
+
+    # Table 4.1 - Terrain categories and terrain parameters
+    terrain_table = {
+        0: {"z0": 0.003, "zmin": 1.0},  # type 0
+        1: {"z0": 0.010, "zmin": 1.0},  # type I
+        2: {"z0": 0.050, "zmin": 2.0},  # type II
+        3: {"z0": 0.300, "zmin": 5.0},  # type III
+        4: {"z0": 1.000, "zmin": 10.0}, # type IV
+    }
+    if terrain not in terrain_table:
+        raise ValueError("terrain must be 0/1/2/3/4 (corresponding to 0/I/II/III/IV)")
+
+    # C_pe table from EN 1991-1-4 (Table 7.1)
+    # C_pe,10
+    ext_p_coef_10_table = {
+        # ("zone", "h/d"): C_pe
+        ("A", "0.25"): -1.2,  ("A", "1"): -1.2,  ("A", "5"): -1.2,
+        ("B", "0.25"): -0.8,  ("B", "1"): -0.8,  ("B", "5"): -0.8,
+        ("C", "0.25"): -0.5,  ("C", "1"): -0.5,  ("C", "5"): -0.5,
+        ("D", "0.25"): +0.7,  ("D", "1"): +0.8,  ("D", "5"): +0.8,
+        ("E", "0.25"): -0.3,  ("E", "1"): -0.5,  ("E", "5"): -0.7,
+    }
+    # C_pe,1
+    ext_p_coef_1_table = {
+        # ("zone", "h/d"): C_pe
+        ("A", "0.25"): -1.4,  ("A", "1"): -1.4,  ("A", "5"): -1.4,
+        ("B", "0.25"): -1.1,  ("B", "1"): -1.1,  ("B", "5"): -1.1,
+        ("C", "0.25"): -0.5,  ("C", "1"): -0.5,  ("C", "5"): -0.5,
+        ("D", "0.25"): +1.0,  ("D", "1"): +1.0,  ("D", "5"): +1.0,
+        ("E", "0.25"): -0.3,  ("E", "1"): -0.5,  ("E", "5"): -0.7,
+    }
+    h_over_d = h / d
+    if h_over_d > 5.0:
+        raise ValueError("h/d must be <= 5")
+
+    # get cpe based on window size from ext_p_coef_10_table and ext_p_coef_1_table using log interpolation
+    h_over_d = h / d
+    cpe10 = _lookup_cpe(zone, h_over_d, ext_p_coef_10_table)
+    cpe1  = _lookup_cpe(zone, h_over_d, ext_p_coef_1_table)
+    cpe    = _cpe_for_area(window_size, cpe1, cpe10)
+
+    z0   = terrain_table[terrain]["z0"]
+    zmin = terrain_table[terrain]["zmin"]
+
+    z_eff = max(z, zmin)    # (4.4) c_r(z) = c_r(z_min) for z <= z_min
+
+    # (4.1) Basic wind velocity v_b = c_dir * c_season * v_b,0
+    vb = c_dir * c_season * vb0
+
+    # (4.5) k_r = 0.19 * (z_0 / z_0,II)^0.07
+    # where:
+    # z_0,II = 0.05 m (terrain category II, Table 4.1)
+    kr = 0.19 * (z0 / 0.05) ** 0.07
+
+    # (4.4) c_r(z) = k_r * ln(z / z0) for z_min <= z <= z_max
+    cr = kr * math.log(z_eff / z0)
+
+    # (4.3) v_m(z) = c_r(z) * c_0(z) * v_b
+    vm = cr * c0 * vb
+
+    # (4.7) I_v(z) = k_i / (c0(z) * ln(z / z_0))
+    Iv = k_i / (c0 * math.log(z_eff / z0))
+
+    # (4.8) q_p(z) = 0.5 * rho * v_m(z)^2 * (1 + 7 * I_v(z))
+    qp = 0.5 * rho * vm**2 * (1 + 7 * Iv)
+
+    # (5.1) w_e = q_p(z_e) * C_pe
+    we = qp * cpe
+
+    return {"we": we, "cpe": cpe, "qp": qp, "vm": vm, "Iv": Iv, "cr": cr, "vb": vb}
