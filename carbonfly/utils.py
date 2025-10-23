@@ -336,3 +336,32 @@ def wind_pressure_en1991(
     we = qp * cpe
 
     return {"we": we, "cpe": cpe, "qp": qp, "vm": vm, "Iv": Iv, "cr": cr, "vb": vb}
+
+
+def air_exchange_rate_maas1995(A_eff: float, u: float, H: float, delta_theta: float) -> float:
+    """
+    Air exchange rate in m3/h using Maas' formula:
+    Qdot = 3600 * 1/2 * A_eff * sqrt(C1 * u^2 + C2 * H * delta_theta + C3)
+
+    Source:
+    Anton Maas. Experimental quantification of air exchange during window ventilation. PhD thesis, University of Kassel, Kassel, 1995.
+    URL https://www.uni-kassel.de/fb6/bpy/de/forschung/abgeschlprojekte/pdfs/maas_diss.pdf
+
+    Args:
+        A_eff: effective opening area in m^2
+        u: outdoor wind speed (10 m) in m/s
+        H: height of the window sash in m
+        delta_theta: temperature difference between the inside and outside in K
+
+    Returns:
+        Qdot: air exchange rate through the opening in m3/h
+    """
+    C1 = 0.0056
+    C2 = 0.0037
+    C3 = 0.012
+
+    inner = C1 * (u ** 2) + C2 * H * delta_theta + C3
+    if inner < 0:
+        inner = 0.0  # avoid negative inner
+    Qdot = 3600.0 * 0.5 * A_eff * math.sqrt(inner)
+    return Qdot
