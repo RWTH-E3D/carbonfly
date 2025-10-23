@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.7.0 (2025-10-23)
+
+1. Add helper function to compute surface wind pressure based on DIN EN 1991-1-4:2010-12: Eurocode 1: Actions on structures - Part 1-4: General actions - Wind actions; German version EN 1991-1-4:2005 + A1:2010 + AC:2010. DOI: https://dx.doi.org/10.31030/1625598
+2. Add Maas' formula to calculate air exchange rate. Source: Anton Maas. Experimental quantification of air exchange during window ventilation. PhD thesis, University of Kassel, Kassel, 1995. URL: https://www.uni-kassel.de/fb6/bpy/de/forschung/abgeschlprojekte/pdfs/maas_diss.pdf
+3. Add version info
+4. Update documentation
+
 ## v0.6.0 (2025-10-13)
 
 1. Add Recirculated Supply & Return
