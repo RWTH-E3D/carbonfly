@@ -9,4 +9,4 @@ carbonfly
 - Website: https://github.com/RWTH-E3D/carbonfly
 """
 
-__version__ = "0.6.0"
+__version__ = "0.7.0"
