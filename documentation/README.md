@@ -6,6 +6,7 @@
     * [01:Create](#01create)
       * [CreateCFCase](#createcfcase)
       * [CreateCFGeometry](#createcfgeometry)
+      * [Carbonfly Info](#carbonfly-info)
     * [02:Boundary](#02boundary)
       * [Body](#body)
       * [Dynamic Respiration](#dynamic-respiration)
@@ -29,10 +30,12 @@
       * [checkMesh](#checkmesh)
       * [foamMonitor](#foammonitor)
     * [05:Util](#05util)
+      * [Air Exchange Rate (Maas)](#air-exchange-rate-maas)
       * [BSA (Du Bois)](#bsa-du-bois)
       * [CO2 generation rate](#co2-generation-rate)
       * [Gagge two-node model](#gagge-two-node-model)
       * [Gagge two-node model (sleep)](#gagge-two-node-model-sleep)
+      * [Surface Wind Pressure](#surface-wind-pressure)
       * [Manikin LOD 0](#manikin-lod-0)
       * [Met List](#met-list)
 <!-- TOC -->
@@ -79,6 +82,22 @@ Create Carbonfly geometry
 | `geometry` *(GeometryBase)*: Single surface/face/brep or a collection                           | `CF_geo`: Carbonfly Geometry |
 | `boundary` *(from [02:Boundary](#02boundary))*: Carbonfly boundary                              |                              |
 | `refine_levels` *(Interval)*: Refine levels for meshing: (min, max) or as a single float number |                              |
+
+[Back to top ↥](#carbonfly-toolbox-documentation)
+
+#### Carbonfly Info
+
+<img src="../grasshopper/icons/Carbonfly_Info.png" alt="icon" width="60"/>
+
+Information about Carbonfly
+
+![CreateCFGeometry](_pics/GH_Carbonfly_Info.png)
+
+| Inputs | Outputs                              |
+|--------|--------------------------------------|
+|        | `version` *(str)*: Carbonfly version |
+|        | `homepage` *(str)*: Homepage URL     |
+|        | `license` *(str)*: Carbonfly license |
 
 [Back to top ↥](#carbonfly-toolbox-documentation)
 
@@ -386,6 +405,37 @@ Run *foamMonitor*, live monitoring tool to track residuals during simulation.
 
 ### 05:Util
 
+#### Air Exchange Rate (Maas)
+
+<img src="../grasshopper/icons/Air_Exchange_Rate_Maas.png" alt="icon" width="60"/>
+
+Air exchange rate in m3/h using Maas' formula:
+
+$\rm \dot{Q}  = 3600 \cdot \frac{1}{2} \cdot A_{eff} \cdot \sqrt{(C_1 \cdot u^2 + C_2 \cdot H \cdot \Delta \vartheta + C_3)}$
+
+Where:
+1. $\rm A_{eff}$: the effective opening area in $\rm m^2$
+2. $\rm u$: the outdoor wind speed in m/s 
+3. $\rm H$: the height of the window sash in m 
+4. $\rm C_1$: coefficient, $\rm = 0.0056$ 
+5. $\rm C_2$: coefficient, $\rm = 0.0037$ 
+6. $\rm C_3$: coefficient, $\rm = 0.012$ 
+7. $\rm \Delta \vartheta$: the temperature difference between the inside and outside in K
+
+> Source: Anton Maas. Experimental quantification of air exchange during window ventilation. PhD thesis, University of Kassel, Kassel, 1995.
+URL: https://www.uni-kassel.de/fb6/bpy/de/forschung/abgeschlprojekte/pdfs/maas_diss.pdf
+
+![BSA (Du Bois)](_pics/GH_Air_Exchange_Rate_Maas.png)
+
+| Inputs                                                                                  | Outputs                                     |
+|-----------------------------------------------------------------------------------------|---------------------------------------------|
+| `A_eff` *(float)*: the effective opening area in $\rm m^2$                              | `Qdot` *(float)*: Air exchange rate in m3/h |
+| `u` *(float)*: the outdoor wind speed in m/s                                            |                                             |
+| `H` *(float)*: the height of the window sash in m                                       |                                             |
+| `delta_theta` *(float)*: the temperature difference between the inside and outside in K |                                             |
+
+[Back to top ↥](#carbonfly-toolbox-documentation)
+
 #### BSA (Du Bois)
 
 <img src="../grasshopper/icons/BSA_Du_Bois.png" alt="icon" width="60"/>
@@ -489,6 +539,69 @@ Adaption of the Gagge two-node model for sleep thermal environment, by Yan et al
 | `alfa` *(float)*: Dynamic fraction of total body mass assigned to the skin node. Defaults to 0.1    |                                                                                                                                                                                                                                                                                                               |
 | `skin_blood_flow` *(float)*: Skin-blood-flow rate per unit surface area in kg/h/m2. Defaults to 6.3 |                                                                                                                                                                                                                                                                                                               |
 | `met_shivering` *(float)*: Metabolic rate due to shivering in met. Defaults to 0                    |                                                                                                                                                                                                                                                                                                               |
+
+[Back to top ↥](#carbonfly-toolbox-documentation)
+
+#### Surface Wind Pressure
+
+<img src="../grasshopper/icons/Surface_Wind_Pressure.png" alt="icon" width="60"/>
+
+Computes peak and surface wind pressure for vertical walls of rectangular plan buildings (h/d <=5 and height <= 200m)
+
+> Source: DIN EN 1991-1-4:2010-12. Eurocode 1: Actions on structures - Part 1-4: General actions - Wind actions; German version EN 1991-1-4:2005 + A1:2010 + AC:2010. DOI: https://dx.doi.org/10.31030/1625598
+
+> Notes: For other building types, please see DIN EN 1991-1-4:2010-12.
+
+
+![BSA (Du Bois)](_pics/GH_Surface_Wind_Pressure.png)
+
+| Inputs                                                                                                                                                                                                                            | Outputs                                                                                              |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|
+| `vb0` *(float)*: Fundamental value of the basic wind velocity v_b,0 [m/s] (from National Annex map, 10 m, terrain II, 50 yr)                                                                                                      | `we` *(float)*: Wind pressure on the external surface [Pa]                                           |
+| `z` *(float)*: Height above ground level of the measured/evaluated point [m]                                                                                                                                                      | `cpe` *(float)*: External pressure coefficients for vertical walls of rectangular plan buildings [-] |
+| `h` *(float)*: Height of the building [m]                                                                                                                                                                                         | `qp` *(float)*: Peak velocity pressure [Pa]                                                          |
+| `d` *(float)*: Length of the building [m]                                                                                                                                                                                         | `vm` *(float)*: Mean wind speed [m/s]                                                                |
+| `window_size` *(float)*: Window size in [m^2]                                                                                                                                                                                     | `Iv` *(float)*: Turbulence intensity                                                                 |
+| `zone` *(str)*: External pressure zones*, A/B/C on side/roof edges along the flow, D windward face, and E leeward face                                                                                                            | `cr` *(float)*: Roughness factor                                                                     |
+| `terrain` *(int)*: Terrain type, 0/1/2/3/4, default: 4, corresponding to Type 0/I/II/III/IV**                                                                                                                                     | `vb` *(float)*: Basic wind velocity [m/s]                                                            |
+| `c_dir` *(float)*: Directional factor, for various wind directions may be found in the National Annex. The recommended value is 1.0                                                                                               |                                                                                                      |
+| `c_season` *(float)*: Season factor, may be given in the National Annex. The recommended value is 1.0                                                                                                                             |                                                                                                      |
+| `c0` *(float)*: Orography factor, taken as 1.0 unless otherwise specified. Note: Information on c0 may be given in the National Annex. If the orography is accounted for in the basic wind velocity, the recommended value is 1.0 |                                                                                                      |
+| `rho` *(float)*: Air density in kg/m3. The default value is 1.25 kg/m3                                                                                                                                                            |                                                                                                      |
+| `k_i` *(float)*: Turbulence factor. The value of k_i may be given in the National Annex. The recommended value for k_i is 1.0                                                                                                     |                                                                                                      |
+
+*External pressure zones:
+```angular2html
+Top view:
+               <- - - d (length)  - ->
+               -----------------------     ^
+               |                     |     |
+    wind --> D |                     | E   b (width)
+               |                     |     |
+               -----------------------     -
+    D = windward face (positive pressure / stagnation)
+    E = leeward face (negative pressure / wake suction)
+
+Side view:
+               <- - - d (length)  - ->
+               -----------------------     ^
+               |   |         |       |     |
+    wind -->   | A |    B    |   C   |     | h (height)
+               |___|_________|_______|     _
+               <- - - e - - ->
+                   <- 4/5 e ->
+               Where: e = b or 2h, whichever is smaller
+    A: leading corner band (strongest suction)
+    B: intermediate edge band
+    C: outer side/roof band
+```
+
+**Terrain type:
+- 0: Sea, coastal area exposed to the open sea.
+- 1: Lakes or area with negligible vegetation and without obstacles.
+- 2: Area with low vegetation such as grass and isolated obstacles (trees, buildings) with separations of at least 20 obstacle heights.
+- 3: Area with regular cover of vegetation or buildings or with isolated obstacles with separations of maximum 20 obstacle heights (such as villages, suburban terrain, permanent forest).
+- 4: Area in which at least 15 % of the surface is covered with buildings and their average height exceeds 15 m.
 
 [Back to top ↥](#carbonfly-toolbox-documentation)
 
