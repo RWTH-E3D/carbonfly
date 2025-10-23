@@ -62,7 +62,9 @@ carbonfly/
 grasshopper/UserObjects/Carbonfly
 ├─ 01:Create
 │  ├─ CreateCFCase        # Create Carbonfly Case
-│  └─ CreateCFGeometry    # Create Carbonfly Geometry
+│  ├─ CreateCFGeometry    # Create Carbonfly Geometry
+│  │
+│  └─ Carbonfly Info      # Information about Carbonfly
 │
 ├─ 02:Boundary
 │  ├─ Body                # Manikin body
@@ -92,10 +94,12 @@ grasshopper/UserObjects/Carbonfly
 │  └─ foamMonitor         # Run OpenFOAM foamMonitor
 │
 └─ 05:Util
-   ├─ BSA (Du Bois)       # Calculate Body Surface Area using Du Bois' Formula
+   ├─ Air Exchange Rate (Maas)      # Air exchange rate in m3/h using Maas' formula
+   ├─ BSA (Du Bois)       # Calculate Body Surface Area using Du Bois' formula
    ├─ CO2 generation rate # Get CO2 generation rate (L/s)
-   ├─ Gagge two-node model  # Gagge Two-node model of human temperature regulation
+   ├─ Gagge two-node model          # Gagge Two-node model of human temperature regulation
    ├─ Gagge two-node model (sleep)  # Adaption of the Gagge model for sleep thermal environment
+   ├─ Surface Wind Pressure         # Computes peak and surface wind pressure
    │
    ├─ Manikin LOD 0       # Manikin model Level of Detail 0
    │
