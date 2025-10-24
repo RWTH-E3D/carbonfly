@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.7.1 (2025-10-25)
+
+1. Add FoamFile version etc. to support older OpenFOAM version like v8
+2. Add default addLayersControls
+3. Add snap control in build_case() for later use
+4. Add how to uninstall
+5. Add FAQ
+
 ## v0.7.0 (2025-10-23)
 
 1. Add helper function to compute surface wind pressure based on DIN EN 1991-1-4:2010-12: Eurocode 1: Actions on structures - Part 1-4: General actions - Wind actions; German version EN 1991-1-4:2005 + A1:2010 + AC:2010. DOI: https://dx.doi.org/10.31030/1625598
