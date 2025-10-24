@@ -57,6 +57,7 @@ def foam_header(
         "\\*---------------------------------------------------------------------------*/\n\n"
         "FoamFile\n"
         "{\n"
+         "    version     2.0;\n"   # optional for v10, but required for older version, e.g. v8
          "    format      ascii;\n"
         f"    class       {of_class};\n"
     )
