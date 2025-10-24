@@ -1,5 +1,17 @@
 # Instructions for Developers
 
+<!-- TOC -->
+* [Instructions for Developers](#instructions-for-developers)
+  * [Python library](#python-library)
+    * [Structure](#structure)
+  * [Grasshopper toolbox](#grasshopper-toolbox)
+    * [Structure](#structure-1)
+  * [FAQ](#faq)
+    * [Q1: Does Carbonfly support other OpenFOAM versions, such as v8, for use with urbanMicroclimateFoam?](#q1-does-carbonfly-support-other-openfoam-versions-such-as-v8-for-use-with-urbanmicroclimatefoam)
+    * [Q2: Why does Carbonfly use WSL instead of blueCFD-Core?](#q2-why-does-carbonfly-use-wsl-instead-of-bluecfd-core)
+    * [Q3: How can I add a new boundary condition in Carbonfly?](#q3-how-can-i-add-a-new-boundary-condition-in-carbonfly)
+<!-- TOC -->
+
 Carbonfly consists of two key components: 
 
 1. a Python library that implements the core functionality and provides the necessary interfaces, and 
@@ -107,3 +119,49 @@ grasshopper/UserObjects/Carbonfly
 ```
 
 The scripts for each GH User Object are saved in `carbonfly/grasshopper/XXXXXX.py`.
+
+## FAQ
+
+### Q1: Does Carbonfly support other OpenFOAM versions, such as v8, for use with urbanMicroclimateFoam?
+
+Yes and no. 
+
+You can use most Carbonfly components with OpenFOAM v8 to generate a case and run blockMesh, surfaceFeature, 
+snappyHexMesh, and checkMesh.
+
+However, the `buoyantReactingFoam` solver that Carbonfly uses for CO2 simulations is not available in 
+OpenFOAM v8. To use [urbanMicroclimateFoam](https://github.com/OpenFOAM-BuildingPhysics/urbanMicroclimateFoam) 
+with OpenFOAM v8, for example, you need to edit `run_foam_console()` or better add a new one to `wsl.py` for your 
+specific usage. Depending on the solver you used, you may also need to adjust the boundary conditions.
+
+If you would like to try OpenFOAM v8, please follow the steps below:
+
+1. Install OpenFOAM v8 by following the official guide: https://openfoam.org/download/8-ubuntu/
+
+2. Use `/opt/openfoam8/etc/bashrc` as the input for `foam_bashrc`, see the example with Carbonfly `blockMesh` below:
+
+![Example Carbonfly with OpenFOAM v8](pics/Carbonfly_with_OpenFOAM_v8_example.png)
+
+### Q2: Why does Carbonfly use WSL instead of blueCFD-Core?
+
+Carbonfly uses WSL (Windows Subsystem for Linux) on Windows 10 or 11 as a bridge to learning and working with 
+native OpenFOAM. Most advanced applications and research workflows are ultimately more convenient in WSL or 
+a pure Linux environment.
+
+In contrast, blueCFD-Core offers only a limited selection of OpenFOAM versions, and it also requires a separate 
+installation process. The effort required for the latter is roughly comparable to setting up WSL. 
+Therefore, adopting WSL provides a more flexible, future-proof solution for beginners and advanced users alike.
+
+### Q3: How can I add a new boundary condition in Carbonfly?
+
+Below are the steps to create a custom boundary condition for your use:
+
+1. Check the classes in `carbonfly/boundary.py` to see if your needed boundary condition is already defined.
+
+2. If so, you can use it directly in Grasshopper. For reference, see the scripts for each GH User Object in `carbonfly/grasshopper/XXXXXX.py`.
+
+3. If not: 
+
+   1. Add a new class in `carbonfly/boundary.py`
+   
+   2. Update `field_writer.py` for example `_field_block_text()`
