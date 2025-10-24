@@ -14,7 +14,7 @@ carbonfly
 from pathlib import Path
 from collections import defaultdict
 import math
-from typing import Iterable, Dict, List, Tuple
+from typing import Iterable, Dict, List, Tuple, Optional
 
 from .mesh import brep_to_mesh, write_multi_solid_ascii_stl
 from .field_writer import write_0_field
@@ -104,6 +104,7 @@ def build_case(
     padding_m: float = 1.0,
     cell_size_m: float = 0.25,
     write_snappy: bool = True,
+    snap: bool = True,
     inside_point: Tuple[float, float, float] = (0.5, 0.5, 0.5),
     write_constant: bool = True,
     write_fv: bool = True,
@@ -137,6 +138,7 @@ def build_case(
         padding_m:      Extra margin (in meters) added around the union of all CFGeo bounding boxes when computing the blockMesh domain extents.
         cell_size_m:    Target approximate cell size (in meters) used to derive (nx,ny,nz) for blockMesh.
         write_snappy:   If True, write snappyHexMeshDict.
+        snap:           snap setting in snappyHexMeshDict.
         inside_piont:   Reference point inside model.
         write_constant: If True, write constant/ files.
         write_fv:       If True, write fvSolution & fvSchemes.
@@ -225,7 +227,7 @@ def build_case(
 
         snappy_path = write_snappy_geometry(
             case_root, stl_file_name, regions, region_levels,
-            castellated_mesh=True, snap=False, add_layers=False,
+            castellated_mesh=True, snap=snap, add_layers=False,
             feature_level=feat_lvl,
             inside_point= inside_point,
         )
