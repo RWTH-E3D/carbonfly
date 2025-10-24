@@ -1,7 +1,7 @@
-# Carbonfly Installation & Update
+# Carbonfly Installation & Update & Uninstall
 
 <!-- TOC -->
-* [Carbonfly Installation & Update](#carbonfly-installation--update)
+* [Carbonfly Installation & Update & Uninstall](#carbonfly-installation--update--uninstall)
   * [How to install?](#how-to-install)
     * [Step 1: Install WSL](#step-1-install-wsl)
     * [Step 2: Install OpenFOAM v10](#step-2-install-openfoam-v10)
@@ -10,6 +10,7 @@
       * [Installer](#installer)
     * [Step 4: Install ParaView (optional)](#step-4-install-paraview-optional)
   * [How to update Carbonfly?](#how-to-update-carbonfly)
+  * [How to uninstall Carbonfly?](#how-to-uninstall-carbonfly)
 <!-- TOC -->
 
 ## How to install?
@@ -110,3 +111,16 @@ After simulation, simply double-click the automatically generated `.foam` file i
 3. Replace the old folders with the new ones:
    - Delete `%AppData%\McNeel\Rhinoceros\8.0\scripts\carbonfly` and copy in the new `carbonfly` folder.
    - Delete `%AppData%\Grasshopper\UserObjects\Carbonfly` and copy in the new `Carbonfly` folder from `grasshopper/UserObjects`.
+
+## How to uninstall Carbonfly?
+
+1. Close Rhino and Grasshopper.
+
+2. Delete the `carbonfly` folder from the Rhino 8 script path: `%AppData%\McNeel\Rhinoceros\8.0\scripts`.
+
+3. Delete the `Carbonfly` folder from the Grasshopper plugin path: `%AppData%\Grasshopper\UserObjects`.
+
+4. (Optional) Uninstall the Linux distribution you installed like `Ubuntu 20.04 LTS` from the "Apps & features" or "Installed apps" settings in Windows.
+
+> In Windows Terminal, you can use the command `wsl -l` to check all installed Linux distributions.
+
