@@ -180,7 +180,7 @@ def write_snappy_geometry(
     lines.append("}")
     lines.append("")
 
-    # addLayersControls: not needed in carbonfly, leave empty
+    # addLayersControls
     lines.append("addLayersControls")
     lines.append("{")
     lines.append("    layers{}")
