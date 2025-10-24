@@ -106,9 +106,9 @@ See [Examples](./examples)
 
 See [Documentation](./documentation)
 
-## Instructions for Developers
+## Instructions for Developers & FAQs
 
-See [Instructions for Developers](./InstructionsForDevelopers.md)
+See [Instructions for Developers & FAQs](./InstructionsForDevelopers.md)
 
 ## License
 
