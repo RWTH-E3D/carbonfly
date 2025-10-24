@@ -104,7 +104,7 @@ def build_case(
     padding_m: float = 1.0,
     cell_size_m: float = 0.25,
     write_snappy: bool = True,
-    snap: bool = True,
+    snap: bool = False,
     inside_point: Tuple[float, float, float] = (0.5, 0.5, 0.5),
     write_constant: bool = True,
     write_fv: bool = True,
