@@ -19,7 +19,7 @@ An easy-to-use Python library and Grasshopper toolbox for indoor CO2 CFD simulat
 - [Roadmap](#roadmap)
 - [How to install?](#how-to-install)
 - [Documentation](#documentation)
-- [Instructions for Developers](#instructions-for-developers--faqs)
+- [Instructions for Developers & FAQs](#instructions-for-developers--faqs)
 - [License](#license)
 - [How to cite](#how-to-cite)
 
