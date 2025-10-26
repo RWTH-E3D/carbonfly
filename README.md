@@ -121,7 +121,7 @@ There are several ways you can contribute:
 - 🔧 Submit pull requests to improve the code or documentation
 - 📢 Share the plugin with others who may find it useful
 
-Copyright (C) 2025 Qirui Huang, [Institute for Energy Efficiency and Sustainable Building (E3D), RWTH Aachen University](https://www.e3d.rwth-aachen.de/go/id/iyld/?lidx=1)
+Copyright (C) 2025 Qirui Huang, [Institute of Energy Efficiency and Sustainable Building (E3D), RWTH Aachen University](https://www.e3d.rwth-aachen.de/go/id/iyld/?lidx=1)
 
 [Back to top ↥](#quick-navigation)
 
