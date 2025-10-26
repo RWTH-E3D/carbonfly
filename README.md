@@ -9,7 +9,7 @@
 [![License](https://img.shields.io/github/license/RWTH-E3D/carbonfly?color=888)](https://github.com/RWTH-E3D/carbonfly/blob/master/LICENSE)&nbsp;
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17117827.svg)](https://doi.org/10.5281/zenodo.17117827)
 
-A lightweight, easy-to-use Python library and toolbox for indoor CO2 CFD simulation in Grasshopper, based on OpenFOAM and the Windows Subsystem for Linux (WSL).
+An easy-to-use Python library and Grasshopper toolbox for indoor CO2 CFD simulation, based on OpenFOAM and the Windows Subsystem for Linux (WSL).
 
 <img src="./pics/carbonfly_logo.svg" width="10%" alt="Example 02b residuals" />
 
@@ -29,7 +29,7 @@ A lightweight, easy-to-use Python library and toolbox for indoor CO2 CFD simulat
 2. **Rhino-to-CFD in "one click"**: Use Rhino/Grasshopper geometry. Carbonfly handles meshing and other setups - no OpenFOAM text files to edit.
 3. **Plug-and-play boundaries**: Presets for inlets, outlets, and walls etc., with sensible defaults you can tweak.
 4. **Fast what-if studies**: Change flow rate, supply temperature, CO2 concentration, and diffuser placement and quickly rerun for comparison.
-5. **Visualization-ready outputs**: Exports a standard OpenFOAM case for viewing CO2/velocity/temperature/pressure etc. in ParaView.
+5. **Visualization-ready outputs**: Exports a standard OpenFOAM case for viewing CO2 / velocity / temperature / pressure etc. in ParaView.
 
 **See our [Examples](./examples):**
 
