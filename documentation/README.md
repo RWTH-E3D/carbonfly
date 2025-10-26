@@ -422,6 +422,8 @@ Where:
 6. $\rm C_3$: coefficient, $\rm = 0.012$ 
 7. $\rm \Delta \vartheta$: the temperature difference between the inside and outside in K
 
+> Note: This approximation has only been validated under conditions in which the outdoor temperature is lower than the indoor temperature. Its accuracy under the opposite condition remains unverified.
+
 > Source: Anton Maas. Experimental quantification of air exchange during window ventilation. PhD thesis, University of Kassel, Kassel, 1995.
 URL: https://www.uni-kassel.de/fb6/bpy/de/forschung/abgeschlprojekte/pdfs/maas_diss.pdf
 
