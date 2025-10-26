@@ -139,7 +139,7 @@ If you want to cite **Carbonfly** in your academic work, there are two ways to d
   @software{Carbonfly_Huang,
     author    = {Qirui Huang},
     title     = {Carbonfly},
-    subtitle  = {A lightweight, easy-to-use Python library and toolbox for indoor CO2 CFD simulation in Grasshopper},
+    subtitle  = {An easy-to-use Python library and Grasshopper toolbox for indoor CO2 CFD simulation},
     date      = {2025},
     publisher = {Zenodo},
     url       = {https://github.com/RWTH-E3D/carbonfly},
@@ -150,7 +150,7 @@ If you want to cite **Carbonfly** in your academic work, there are two ways to d
 
   APA style:
   ```
-  Huang, Q. (2025). Carbonfly: A lightweight, easy-to-use Python library and toolbox for indoor CO2 CFD simulation in Grasshopper [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.17117827
+  Huang, Q. (2025). Carbonfly: An easy-to-use Python library and Grasshopper toolbox for indoor CO2 CFD simulation [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.17117827
   ```
 
 - If you wish to cite **Carbonfly** for its design, methodology, etc. (rather than a specific release), please cite our paper:
