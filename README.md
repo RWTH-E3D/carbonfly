@@ -90,6 +90,19 @@ An easy-to-use Python library and Grasshopper toolbox for indoor CO2 CFD simulat
     <td>Paired boundaries for internal (no-fresh-air) air recirculation, applicable to various devices, e.g., split AC indoor units for heating or cooling without fresh air input. The CO2 concentration of the supply air is equal to that of the return air (dynamic).
     </td>
   </tr>
+  <tr>
+    <td rowspan="3">Post-processing</td>
+    <td>⏳ Planned</td>
+    <td>Perform analysis and visualization directly in Grasshopper instead of ParaView.</td>
+  </tr>
+  <tr>
+    <td>⏳ Planned</td>
+    <td>Indoor Air Quality evaluation based on international standards.</td>
+  </tr>
+  <tr>
+    <td>⏳ Planned</td>
+    <td>Integration with multi-objective optimization workflow.</td>
+  </tr>
 </table>
 
 [Back to top ↥](#quick-navigation)
