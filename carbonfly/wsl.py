@@ -29,7 +29,6 @@ import shutil
 def win_to_wsl_path(p: str) -> str:
     """
     Convert a Windows path (e.g., C:\\cases\\demo) into a WSL path (/mnt/c/cases/demo).
-    This is intentionally minimal and does not resolve symlinks.
     """
     p = str(p).replace("\\", "/")
     if len(p) >= 2 and p[1] == ":":
@@ -48,30 +47,13 @@ def wsl_to_win_path(p: str) -> str:
     return p
 
 
-# Terminal detection
-def _detect_terminal() -> Tuple[str, list[str]]:
-    """
-    Decide how to open a *new* console window on Windows.
-    Returns (launcher_name, argv_prefix).
-
-    We prefer Windows Terminal (wt.exe). If not present, fall back to classic console
-    via `cmd.exe /c start`.
-    """
-    wt = shutil.which("wt.exe")
-    if wt:
-        # Use Windows Terminal. We'll append: -w 0 nt  (open a new tab in window 0)
-        return "wt", [wt, "-w", "0", "nt"]
-    # Fallback: classic console via `start`.
-    return "cmd", ["cmd.exe", "/c", "start", ""]
-
-
 # Core runner
 def run_wsl_console(
     command: str,
     *,
     cwd_wsl: Optional[str] = None,
     foam_bashrc: Optional[str] = "/opt/openfoam10/etc/bashrc",
-    distro: Optional[str] = None,           # e.g. "Ubuntu-22.04" (match your WT profile name if you want the same icon/theme)
+    distro: Optional[str] = None,           # e.g. "Ubuntu-20.04"
     log_rel: Optional[str] = None,          # e.g. "system/blockMesh.run.log"
     timeout: Optional[int] = None,
     keep_open: bool = True,
@@ -96,10 +78,9 @@ def run_wsl_console(
     if cwd_wsl:
         prefix.append(f'cd {shlex.quote(cwd_wsl)}')
 
-    # Build the core command with real-time logging behavior when requested.
+    # Build the core command with real-time logging behavior when requested
     core = command
     if log_rel:
-        # Prefer `script` (PTY) for true progressive output; otherwise force line-buffering.
         quoted_cmd = shlex.quote(command)
         quoted_log = shlex.quote(log_rel)
         core = (
@@ -110,38 +91,26 @@ def run_wsl_console(
         )
 
     if keep_open:
-        # Keep the console window around so users can read the tail/end of output.
-        core += r"; echo; echo '[Done] Press any key to close...'; read -n1 -s -r"
+        # Keep the console window to read the output
+        core += r" && echo && echo '[Done] Press any key to close...' && read -n1 -s -r </dev/tty"
 
     inner = core
-    # Source OpenFOAM bashrc if provided. Silence errors so missing files won't break execution.
+    # Source OpenFOAM bashrc if provided
     if foam_bashrc:
         inner = f'source "{foam_bashrc}" >/dev/null 2>&1 || true; ' + inner
 
     if prefix:
-        inner = "; ".join(prefix) + "; " + inner
+        inner = " && ".join(prefix) + " && " + inner
 
-    # Build the WSL invocation that actually runs our bash payload.
+    # Build the WSL invocation
     wsl_argv = ["wsl.exe"]
     if distro:
         wsl_argv += ["-d", distro]
-    wsl_argv += ["bash", "-lc", inner]
+    wsl_argv += ["--", "bash", "-lc", inner]
 
-    # Decide which terminal to use.
-    launcher, prefix_argv = _detect_terminal()
-
-    if launcher == "wt":
-        wt_args = list(prefix_argv)  # [wt.exe, -w, 0, nt]
-        if distro:
-            wt_args += ["-p", distro]
-        wt_args += ["-e"] + wsl_argv   # run wsl.exe ... bash -lc "<inner>"
-
-        # Launch a new tab/window
-        proc = subprocess.Popen(wt_args, creationflags=CREATE_NEW_CONSOLE)
-    else:
-        # Classic console fallback: `cmd.exe /c start "" wsl.exe ...`
-        argv = prefix_argv + wsl_argv
-        proc = subprocess.Popen(argv, creationflags=CREATE_NEW_CONSOLE)
+    # `cmd.exe /c start "" wsl.exe ...`
+    argv = ["cmd.exe", "/c", "start", "", *wsl_argv]
+    proc = subprocess.Popen(argv, creationflags=CREATE_NEW_CONSOLE)
 
     try:
         return proc.wait(timeout=timeout)
