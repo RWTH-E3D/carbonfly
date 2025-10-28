@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.7.2 (2025-10-28)
+
+1. Fix Windows terminal issue on Windows 11 #1
+2. Add tutorial video - How to Install
+
 ## v0.7.1 (2025-10-25)
 
 1. Add FoamFile version etc. to support older OpenFOAM version like v8
