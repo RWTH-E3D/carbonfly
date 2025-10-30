@@ -18,6 +18,8 @@ An easy-to-use Python library and Grasshopper toolbox for indoor CO2 CFD simulat
 - [Key Features](#key-features)
 - [Roadmap](#roadmap)
 - [How to install?](#how-to-install)
+- [Carbonfly Video Tutorials](#carbonfly-video-tutorials)
+- [Examples](#examples)
 - [Documentation](#documentation)
 - [Instructions for Developers & FAQs](#instructions-for-developers--faqs)
 - [License](#license)
@@ -111,7 +113,9 @@ An easy-to-use Python library and Grasshopper toolbox for indoor CO2 CFD simulat
 
 See [How to Install & Update & Uninstall](./HowToInstall.md)
 
-Video Tutorial (YouTube): [Carbonfly Tutorial - How to Install](https://www.youtube.com/watch?v=2cnaCHx_9OI)
+## Carbonfly Video Tutorials
+
+[Carbonfly Tutorial Series (YouTube)](https://www.youtube.com/watch?v=2cnaCHx_9OI&list=PLdKdhraP5SXNjJ81d2iK5UM4sPhSs7X5r)
 
 ## Examples
 
