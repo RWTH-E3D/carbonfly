@@ -13,6 +13,8 @@
   * [How to uninstall Carbonfly?](#how-to-uninstall-carbonfly)
 <!-- TOC -->
 
+> :movie_camera: Check out our video tutorial on [How to Install Carbonfly](https://www.youtube.com/watch?v=2cnaCHx_9OI)
+
 ## How to install?
 
 ### Step 1: Install WSL
