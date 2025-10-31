@@ -50,7 +50,7 @@ def iaq_co2(
             CO2 concentration outdoors in ppm.
 
         standard: str
-            standard applied for evaluation, support "EN", "LEHB", "SS", "HK", "UBA", "DOSH", see Notes.
+            standard applied for evaluation, support "EN", "LEHB", "SS", "HK", "UBA", "DOSH", "NBR", see Notes.
 
     Returns:
         report: dict
@@ -97,8 +97,16 @@ def iaq_co2(
         Evaluation based on CO2 concentration indoors.
             - [Index = 1] Acceptable: CO2 <= 1000 ppm
             - [Index = 2] Unacceptable: CO2 > 1000 ppm
+
+        - NBR: Brazilian standard ABNT NBR 16401-3:2008
+            "Air-conditioning installations – Central and unitary systems – Part 3: Indoor air quality"
+            and ABNT NBR 17037:2023
+            "Indoor air quality in artificially heated non-residential environments – Referential standards"
+        Evaluation based on CO2 concentration differences between indoors and outdoors.
+            - [Index = 1] Acceptable: delta(CO2) <= 700 ppm
+            - [Index = 2] Unacceptable: delta(CO2) > 700 ppm
     """
-    standards = ["EN", "LEHB", "SS", "HK", "UBA", "DOSH"]
+    standards = ["EN", "LEHB", "SS", "HK", "UBA", "DOSH", "NBR"]
     if standard not in standards:
         raise ValueError(
             f"Error: Unknow standard for iaq_co2(). Supported standards are {standards}."
@@ -139,25 +147,36 @@ def iaq_co2(
             co2_outdoor_i = co2_outdoor_scalar
 
         if standard == "LEHB":
+            source = "Japanese law for environmental health in buildings (LEHB)"
             index = _iaq_co2_single_th(co2_indoor_i, threshold=1000, includingth=True)
         elif standard == "SS":
+            source = "Singapore standard SS 554:2016"
             index = _iaq_delta_co2_single_th(
                 co2_indoor_i, co2_outdoor_i, threshold=700, includingth=True
             )
         elif standard == "HK":
+            source = "Hong Kong Environmental Protection Department"
             index = _iaq_co2_hk(co2_indoor_i)
         elif standard == "UBA":
+            source = "German environmental protection agency"
             index = _iaq_co2_uba(co2_indoor_i)
         elif standard == "DOSH":
+            source = "Department of Occupational Safety and Health (DOSH) Malaysia"
             index = _iaq_co2_single_th(co2_indoor_i, threshold=1000, includingth=True)
+        elif standard == "NBR":
+            source = "Brazilian standard ABNT NBR 16401-3:2008 and ABNT NBR 17037:2023"
+            index = _iaq_delta_co2_single_th(
+                co2_indoor_i, co2_outdoor_i, threshold=700, includingth=True
+            )
         else:
             # default: EN standard
+            source = "European standard CEN/EN 16798-1, based on german version DIN EN 16798-1:2019"
             index = _iaq_co2_en(co2_indoor_i, co2_outdoor_i)
 
         indices.append(index)
 
     report["indices"] = indices
-    report["standard"] = standard
+    report["standard"] = source
     report["co2_indoor"] = co2_indoor
     report["co2_outdoor"] = co2_outdoor
 
