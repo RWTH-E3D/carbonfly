@@ -724,6 +724,24 @@ Use this after you have already:
 
 Evaluate Indoor Air Quality (IAQ) from CO2 concentration, based on different international/national standards.
 
+> **Warnings:**
+> 
+> CO2 is only suitable for assessing IAQ as an **indirect** proxy indicator of ventilation rate. 
+> The assessment should be made aware of the following limitations:
+> 1. CO2 below the threshold does not ensure an acceptable overall IAQ, but an excessively high CO2
+> may indicate that the room is not well ventilated, e.g. the ventilation system is not functioning
+> correctly or the windows are closed for a long period of time.
+> 2. The direct impact of CO2 on health, well-being, and performance is still controversial. 
+> At the same time CO2 should not be used directly as a direct indicator of the risk of disease transmission,
+> but should only be considered as an indirect indicator of ventilation rates.
+> 3. CO2 measurements are greatly influenced by the accuracy of the sensor, its installation location
+> and calibration method.
+> 
+> Therefore, ASHRAE does not have a CO2-based IAQ index, see:
+> 
+> Persily A. 2020. Quit Blaming ASHRAE Standard 62.1 for 1000 ppm CO2, The 16th Conference of the Internatinal
+> Society of Indoor Air Quality & Climate.
+
 ![internalProbes](_pics/GH_CO2-based_IAQ.png)
 
 | Inputs                                                                                      | Outputs                                                                          |
@@ -746,6 +764,24 @@ Evaluate Indoor Air Quality (IAQ) from CO2 concentration, based on different int
 #### Carbonfly IAQ Standards
 
 A preset list of CO2-based IAQ standards.
+
+> **Warnings:**
+> 
+> CO2 is only suitable for assessing IAQ as an **indirect** proxy indicator of ventilation rate. 
+> The assessment should be made aware of the following limitations:
+> 1. CO2 below the threshold does not ensure an acceptable overall IAQ, but an excessively high CO2
+> may indicate that the room is not well ventilated, e.g. the ventilation system is not functioning
+> correctly or the windows are closed for a long period of time.
+> 2. The direct impact of CO2 on health, well-being, and performance is still controversial. 
+> At the same time CO2 should not be used directly as a direct indicator of the risk of disease transmission,
+> but should only be considered as an indirect indicator of ventilation rates.
+> 3. CO2 measurements are greatly influenced by the accuracy of the sensor, its installation location
+> and calibration method.
+> 
+> Therefore, ASHRAE does not have a CO2-based IAQ index, see:
+> 
+> Persily A. 2020. Quit Blaming ASHRAE Standard 62.1 for 1000 ppm CO2, The 16th Conference of the Internatinal
+> Society of Indoor Air Quality & Climate.
 
 ![internalProbes](_pics/GH_Carbonfly_IAQ_Standards.png)
 
