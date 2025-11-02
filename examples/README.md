@@ -22,6 +22,8 @@ Below is a collection of examples with descriptions to help you get started quic
   - `06_split_ac_recirc_transient.gh`
 - Example 07: [Post-processing and visualization of the values of several points from Example 3a](#example-07)
   - `07_postprocessing_points.gh`
+- Example 07: [Post-processing and visualization of the values of a slice as a heatmap from Example 1a](#example-08)
+  - `08_postprocessing_heatmap.gh`
 
 ## Example 01
 
@@ -397,5 +399,34 @@ Post-processing and visualization of the values of several points from Example 3
 Transient simulation (0 - 300 s). Results in Rhino & Grasshopper:
 
 ![Example 07 Results](./_pics/07_postprocessing_points.gif)
+
+[Back to top ↥](#quick-navigation)
+
+## Example 08
+
+Post-processing and visualization of the values of a slice as a heatmap from Example 1a.
+
+![Example 01 Room Model](./_pics/01_simple_mech_vent_Rhino.png)
+
+Transient simulation (0 - 300 s). Results in Rhino & Grasshopper:
+
+<table style="table-layout: fixed; width: 100%;">
+  <tr>
+    <td align="center" valign="top">
+      <img src="./_pics/08_postprocessing_heatmap_CO2ppm.gif" width="100%" alt="Example 08 CO2" />
+      <br/>
+      <sub>
+        CO2 concentration in ppm
+      </sub>
+    </td>
+    <td align="center" valign="top">
+      <img src="./_pics/08_postprocessing_heatmap_IAQ_EN16798-1.gif" width="100%" alt="Example 08 IAQ" />
+      <br/>
+      <sub>
+        IAQ evaluation based on EN 16798-1 (Category I - IV)
+      </sub>
+    </td>
+  </tr>
+</table>
 
 [Back to top ↥](#quick-navigation)
