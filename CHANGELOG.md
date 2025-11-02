@@ -11,7 +11,7 @@
    6. Department of Occupational Safety and Health (DOSH) Malaysia: "Industry Code of Practice on Indoor Air Quality 2010 (ICOP IAQ 2010)."
    7. Brazilian standard ABNT NBR 16401-3:2008 and ABNT NBR 17037:2023
 2. Add post-processing Python API and Grasshopper User Objects
-3. Add Example 07 for post-processing
+3. Add Example 07 for post-processing and visualization of the values of several points
 4. Update documentation
 
 ## v0.7.2 (2025-10-28)
