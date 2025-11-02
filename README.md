@@ -32,6 +32,7 @@ An easy-to-use Python library and Grasshopper toolbox for indoor CO2 CFD simulat
 3. **Plug-and-play boundaries**: Presets for inlets, outlets, and walls etc., with sensible defaults you can tweak.
 4. **Fast what-if studies**: Change flow rate, supply temperature, CO2 concentration, and diffuser placement and quickly rerun for comparison.
 5. **Visualization-ready outputs**: Exports a standard OpenFOAM case for viewing CO2 / velocity / temperature / pressure etc. in ParaView.
+6. **In-Grasshopper post-processing & IAQ evaluation**: Directly read OpenFOAM results inside Grasshopper for visualization and CO2-based Indoor Air Quality (IAQ) evaluation based on different standards.
 
 **See our [Examples](./examples):**
 
@@ -94,12 +95,12 @@ An easy-to-use Python library and Grasshopper toolbox for indoor CO2 CFD simulat
   </tr>
   <tr>
     <td rowspan="3">Post-processing</td>
-    <td>⏳ Planned</td>
-    <td>Perform analysis and visualization directly in Grasshopper instead of ParaView.</td>
+    <td>✅ Done (v0.8.0)</td>
+    <td>Perform analysis and visualization directly in Grasshopper instead of ParaView. See our <a href="./examples" alt="Examples" target="_blank">Examples</a>.</td>
   </tr>
   <tr>
-    <td>⏳ Planned</td>
-    <td>Indoor Air Quality evaluation based on international standards.</td>
+    <td>✅ Done (v0.8.0)</td>
+    <td>Indoor Air Quality (IAQ) evaluation based on international/national standards. If you know of other CO2-based IAQ standards, please leave a comment in our <a href="https://github.com/RWTH-E3D/carbonfly/discussions/5" alt="discussion board IAQ standards link">discussion board</a>.</td>
   </tr>
   <tr>
     <td>⏳ Planned</td>

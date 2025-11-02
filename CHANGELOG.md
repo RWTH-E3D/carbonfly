@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.8.0 (2025-11-02)
+
+1. #2 Add CO2-based IAQ evaluation, based on:
+   1. European standard CEN/EN 16798-1, based on german version DIN EN 16798-1:2019
+   2. Japanese law for environmental health in buildings (LEHB)
+   3. Singapore standard SS 554:2016
+   4. Hong Kong Environmental Protection Department: "Hongkong Guidance Notes for the Management of Indoor Air Quality in Offices and Public Places"
+   5. German environmental protection agency (Umweltbundesamt): "Gesundheitsschutz 11-2008: Gesundheitliche Bewertung von Kohlendioxid in der Innenraumluft"
+   6. Department of Occupational Safety and Health (DOSH) Malaysia: "Industry Code of Practice on Indoor Air Quality 2010 (ICOP IAQ 2010)."
+   7. Brazilian standard ABNT NBR 16401-3:2008 and ABNT NBR 17037:2023
+2. Add post-processing Python API and Grasshopper User Objects
+3. Add Example 07 for post-processing
+4. Update documentation
+
 ## v0.7.2 (2025-10-28)
 
 1. Fix Windows terminal issue on Windows 11 #1
