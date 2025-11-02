@@ -39,8 +39,8 @@ def iaq_co2(
         3. CO2 measurements are greatly influenced by the accuracy of the sensor, its installation location
         and calibration method.
         Therefore, ASHRAE does not have a CO2-based IAQ index, see:
-        Persily A. 2020. Quit Blaming ASHRAE Standard 62.1 for 1000 ppm CO2, The 16th Conference of the Internatinal
-        Society of Indoor Air Quality & Climate.
+        Persily A. 2020. Quit Blaming ASHRAE Standard 62.1 for 1000 ppm CO2, Indoor Air 2020 - The 16th Conference of
+        the Internatinal Society of Indoor Air Quality & Climate.
 
     Args:
         co2_indoor: float, int or 1d array-like, support numpy array or pandas series
