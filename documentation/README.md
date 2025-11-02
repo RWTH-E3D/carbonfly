@@ -739,7 +739,7 @@ Evaluate Indoor Air Quality (IAQ) from CO2 concentration, based on different int
 > 
 > Therefore, ASHRAE does not have a CO2-based IAQ index, see:
 > 
-> Persily A. 2020. Quit Blaming ASHRAE Standard 62.1 for 1000 ppm CO2, The 16th Conference of the Internatinal
+> Persily A. 2020. Quit Blaming ASHRAE Standard 62.1 for 1000 ppm CO2, Indoor Air 2020 - The 16th Conference of the Internatinal
 > Society of Indoor Air Quality & Climate.
 
 ![internalProbes](_pics/GH_CO2-based_IAQ.png)
@@ -780,7 +780,7 @@ A preset list of CO2-based IAQ standards.
 > 
 > Therefore, ASHRAE does not have a CO2-based IAQ index, see:
 > 
-> Persily A. 2020. Quit Blaming ASHRAE Standard 62.1 for 1000 ppm CO2, The 16th Conference of the Internatinal
+> Persily A. 2020. Quit Blaming ASHRAE Standard 62.1 for 1000 ppm CO2, Indoor Air 2020 - The 16th Conference of the Internatinal
 > Society of Indoor Air Quality & Climate.
 
 ![internalProbes](_pics/GH_Carbonfly_IAQ_Standards.png)
