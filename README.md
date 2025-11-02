@@ -1,17 +1,16 @@
 # Carbonfly
 
-![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/RWTH-E3D/carbonfly/total)
-[![Release](https://img.shields.io/github/v/release/RWTH-E3D/carbonfly?label=Release&color=4c8eda)](https://github.com/RWTH-E3D/carbonfly/releases)
-&nbsp;
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/RWTH-E3D/carbonfly/total)&nbsp;
+[![Release](https://img.shields.io/github/v/release/RWTH-E3D/carbonfly?label=Release&color=4c8eda)](https://github.com/RWTH-E3D/carbonfly/releases)&nbsp;
 [![Platforms](https://img.shields.io/badge/Platforms-Rhino_8_&_Grasshopper-4c8eda)](https://www.rhino3d.com/en/)&nbsp;
 [![WSL](https://img.shields.io/badge/Windows-10_&_11_|_with_WSL_2-7a6fac)](https://learn.microsoft.com/en-us/windows/wsl/install)&nbsp;
 [![OpenFOAM](https://img.shields.io/badge/OpenFOAM-v10-7a6fac)](https://openfoam.org/version/10/)&nbsp;
 [![License](https://img.shields.io/github/license/RWTH-E3D/carbonfly?color=888)](https://github.com/RWTH-E3D/carbonfly/blob/master/LICENSE)&nbsp;
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17117827.svg)](https://doi.org/10.5281/zenodo.17117827)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17117827.svg)](https://doi.org/10.5281/zenodo.17117827)&nbsp;
 
 An easy-to-use Python library and Grasshopper toolbox for indoor CO2 CFD simulation, based on OpenFOAM and the Windows Subsystem for Linux (WSL).
 
-<img src="./pics/carbonfly_logo.svg" width="10%" alt="Example 02b residuals" />
+<img src="./pics/carbonfly_logo.svg" width="10%" alt="Carbonfly Logo" />
 
 ## Quick Navigation
 
@@ -34,11 +33,17 @@ An easy-to-use Python library and Grasshopper toolbox for indoor CO2 CFD simulat
 5. **Visualization-ready outputs**: Exports a standard OpenFOAM case for viewing CO2 / velocity / temperature / pressure etc. in ParaView.
 6. **In-Grasshopper post-processing & IAQ evaluation**: Directly read OpenFOAM results inside Grasshopper for visualization and CO2-based Indoor Air Quality (IAQ) evaluation based on different standards.
 
-**See our [Examples](./examples):**
+**Workflow overview:**
 
 <img src="./pics/carbonfly_overview.gif" width="50%" alt="Carbonfly workflow overview" />
 
-<img src="./examples/_pics/01a_simple_mech_vent_transient_ParaView.gif" width="50%" alt="Example 01a simulation results GIF" />
+**Post-processing in ParaView:**
+
+<img src="./examples/_pics/01a_simple_mech_vent_transient_ParaView.gif" width="50%" alt="Carbonfly post-processing in ParaView" />
+
+**Post-processing in Grasshopper:**
+
+<img src="./pics/carbonfly_postprocessing.gif" width="50%" alt="Carbonfly post-processing workflow" />
 
 ## Roadmap
 
