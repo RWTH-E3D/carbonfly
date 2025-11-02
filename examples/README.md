@@ -385,3 +385,15 @@ Transient simulation (0 - 180 s). Results in ParaView:
 </table>
 
 [Back to top ↥](#quick-navigation)
+
+## Example 07
+
+Post-processing and visualization of the values of several points from Example 3a.
+
+![Example 03 Room Model](./_pics/03a_simple_mech_vent_human_lod0_Rhino.png)
+
+Transient simulation (0 - 300 s). Results in Rhino & Grasshopper:
+
+![Example 07 Results](./_pics/07_postprocessing_points.gif)
+
+[Back to top ↥](#quick-navigation)
