@@ -20,6 +20,8 @@ Below is a collection of examples with descriptions to help you get started quic
   - `05_dynamic_respiration.gh`
 - Example 06: [A simple room with split AC indoor unit and a manikin (LOD 0) using Dynamic Respiration](#example-06)
   - `06_split_ac_recirc_transient.gh`
+- Example 07: [Post-processing and visualization of the values of several points from Example 3a](#example-07)
+  - `07_postprocessing_points.gh`
 
 ## Example 01
 
