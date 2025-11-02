@@ -38,6 +38,12 @@
       * [Surface Wind Pressure](#surface-wind-pressure)
       * [Manikin LOD 0](#manikin-lod-0)
       * [Met List](#met-list)
+    * [06:Post-processing](#06post-processing)
+      * [internalProbes](#internalprobes)
+      * [postProcess](#postprocess)
+      * [Read Results](#read-results)
+      * [CO2-based IAQ](#co2-based-iaq)
+      * [Carbonfly IAQ Standards](#carbonfly-iaq-standards)
 <!-- TOC -->
 
 ## Grasshopper toolbox
@@ -640,3 +646,108 @@ A preset list for Metabolic rate in met.
 ![Met List](_pics/GH_Carbonfly_Met_List.png)
 
 [Back to top ↥](#carbonfly-toolbox-documentation)
+
+### 06:Post-processing
+
+#### internalProbes
+
+<img src="../grasshopper/icons/internalProbes.png" alt="icon" width="60"/>
+
+Create an OpenFOAM system/internalProbes dictionary for post-processing.
+
+![internalProbes](_pics/GH_internalProbes.png)
+
+| Inputs                                                                                                                                                                                                        | Outputs            |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| `case_path` *(str)*: Carbonfly case path                                                                                                                                                                      | `log` *(str)*: Log |
+| `points` *(Point3d)*: Probe point locations to be written into system/internalProbes. Accepts a single point or a list of points                                                                              |                    |
+| `unit` *(str)*: (Optional) Unit of the input points. Supported values: "m", "cm", or "mm" (default). The component automatically converts the points to meters before writing them to the OpenFOAM dictionary |                    |
+| `fields` *(str)*: Name or list of field names to be sampled at the given points (for example: `CO2`, `T`, `U`, `p`). Field names must match those available in the OpenFOAM case                              |                    |
+| `run` *(bool)*: When True, write internalProbes                                                                                                                                                               |                    |
+
+[Back to top ↥](#carbonfly-toolbox-documentation)
+
+#### postProcess
+
+<img src="../grasshopper/icons/postProcess.png" alt="icon" width="60"/>
+
+Run OpenFOAM post-processing for internalProbes.
+
+![internalProbes](_pics/GH_postProcess.png)
+
+| Inputs                                                                                                                                                                                      | Outputs            |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| `case_path` *(str)*: Carbonfly case path                                                                                                                                                    | `log` *(str)*: Log |
+| `distro` *(str)*: Name of the WSL distribution/profile to run the command in (e.g., "Ubuntu-20.04"); leave blank to use your default WSL                                                    |                    |
+| `foam_bashrc` *(str)*: Path to the OpenFOAM bashrc file to source before running the command (e.g., “/opt/openfoam10/etc/bashrc”); leave blank to skip sourcing/use the current environment |                    |
+| `time_selector` *(str)*: (Optional) Controls which time(s) to process*                                                                                                                      |                    |
+| `run` *(bool)*: When True, run postProcess                                                                                                                                                  |                    |
+
+*Examples for `time_selector`:
+- leave it empty: process all available times.
+- (string) "latestTime" or "latest" or "last": run with `-latestTime`.
+- (int) e.g. "100": run with `-time 100`.
+- (int:int) e.g. "0:100": run with `-time 0:100`.
+
+[Back to top ↥](#carbonfly-toolbox-documentation)
+
+#### Read Results
+
+<img src="../grasshopper/icons/Read_Results.png" alt="icon" width="60"/>
+
+Read sampled field values from postProcessing/internalProbes/<time>/points.xy and convert probe coordinates back to the current Rhino unit.
+Use this after you have already: 
+1. written internalProbes, and 
+2. run postProcess.
+
+![internalProbes](_pics/GH_Read_Results.png)
+
+| Inputs                                                                       | Outputs                                                                                                   |
+|------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
+| `case_path` *(str)*: Carbonfly case path                                     | `time_dir` *(float)*: Name of the time directory that was actually read (e.g. 2000)                       |
+| `which` *(str)*: (Optional) which result to read*                            | `points` *(Vector3d)*: Probe coordinates converted to the Rhino unit                                      |
+| `field` *(str)*: Field name to extract (e.g. `CO2`, `T`, `U`, `p`)           | `values` *(float or Vector3d)*: Field values at these probes (list of numbers, or list of Vector3d for U) |
+| `unit` *(str)*: Unit for output probe coordinates (m, cm, or mm; default mm) |                                                                                                           |
+
+*Examples for `which`:
+1. "latest" / "last": read the newest time dir (default)
+2. (int) for example:
+   1. "0": read the first time dir (smallest time)
+   2. "2": read the 3rd time dir
+   3. "-1": read the last time dir
+
+[Back to top ↥](#carbonfly-toolbox-documentation)
+
+#### CO2-based IAQ
+
+<img src="../grasshopper/icons/CO2_IAQ.png" alt="icon" width="60"/>
+
+Evaluate Indoor Air Quality (IAQ) from CO2 concentration, based on different international/national standards.
+
+![internalProbes](_pics/GH_CO2-based_IAQ.png)
+
+| Inputs                                                                                      | Outputs                                                                          |
+|---------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| `CO2_indoor` *(float or list)*: Indoor CO2 concentration (ppm)                              | `report` *(str)*: IAQ report                                                     |
+| `CO2_outdoor` *(float or list)*: Outdoor CO2 concentration (ppm); if empty, 400 ppm is used | `index` *(float)*: The IAQ Index/Category. For description please see IAQ report |
+| `standard` *(str)*: CO2-based IAQ evaluation standard to apply*                             |                                                                                  |
+
+*Standards:
+- European standard CEN/EN 16798-1 = "EN"
+- Japanese law for environmental health in buildings (LEHB) = "LEHB"
+- Singapore standard SS 554:2016 = "SS"
+- Hong Kong Environmental Protection Department = "HK"
+- German environmental protection agency (Umweltbundesamt) = "UBA"
+- Department of Occupational Safety and Health (DOSH) Malaysia = "DOSH"
+- Brazilian standard ABNT NBR 16401-3:2008 and NBR 17037:2023 = "NBR"
+
+[Back to top ↥](#carbonfly-toolbox-documentation)
+
+#### Carbonfly IAQ Standards
+
+A preset list of CO2-based IAQ standards.
+
+![internalProbes](_pics/GH_Carbonfly_IAQ_Standards.png)
+
+[Back to top ↥](#carbonfly-toolbox-documentation)
+
