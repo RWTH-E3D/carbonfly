@@ -22,7 +22,7 @@ Below is a collection of examples with descriptions to help you get started quic
   - `06_split_ac_recirc_transient.gh`
 - Example 07: [Post-processing and visualization of the values of several points from Example 3a](#example-07)
   - `07_postprocessing_points.gh`
-- Example 07: [Post-processing and visualization of the values of a slice as a heatmap from Example 1a](#example-08)
+- Example 08: [Post-processing and visualization of the values of a slice as a heatmap from Example 1a](#example-08)
   - `08_postprocessing_heatmap.gh`
 
 ## Example 01
