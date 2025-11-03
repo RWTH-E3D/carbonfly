@@ -19,7 +19,7 @@
 
 ### Step 1: Install WSL
 
-Install WSL 2 with Ubuntu-20.04 (should also work with Ubuntu-22.04, not tested) in a terminal window (e.g. PowerShell), also see [WSL Documentation - How to install Linux on Windows with WSL](https://learn.microsoft.com/en-us/windows/wsl/install):
+In Windows 10 or 11, install WSL 2 with Ubuntu-20.04 (should also work with Ubuntu-22.04, not tested) in a terminal window (e.g. PowerShell), also see [WSL Documentation - How to install Linux on Windows with WSL](https://learn.microsoft.com/en-us/windows/wsl/install):
 
 1. `wsl --install -d Ubuntu-20.04`
 
