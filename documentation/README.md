@@ -748,7 +748,7 @@ Evaluate Indoor Air Quality (IAQ) from CO2 concentration, based on different int
 |---------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 | `CO2_indoor` *(float or list)*: Indoor CO2 concentration (ppm)                              | `report` *(str)*: IAQ report                                                     |
 | `CO2_outdoor` *(float or list)*: Outdoor CO2 concentration (ppm); if empty, 400 ppm is used | `index` *(float)*: The IAQ Index/Category. For description please see IAQ report |
-| `standard` *(str)*: CO2-based IAQ evaluation standard to apply*                             |                                                                                  |
+| `standard` *(str)*: CO2-based IAQ assessment standard to apply*                             |                                                                                  |
 
 *Standards:
 - European standard CEN/EN 16798-1 = "EN"
