@@ -28,7 +28,7 @@ An easy-to-use Python library and Grasshopper toolbox for indoor CO2 CFD simulat
 
 1. **Indoor ventilation CFD**: Run steady-state and transient simulations of CO2 transport, airflow, and buoyancy-driven temperature.
 2. **Rhino-to-CFD in "one click"**: Use Rhino/Grasshopper geometry. Carbonfly handles meshing and other setups - no OpenFOAM text files to edit.
-3. **Plug-and-play boundaries**: Presets for inlets, outlets, and walls etc., with sensible defaults you can tweak.
+3. **Plug-and-play boundaries**: Presets for inlets, outlets, natural ventilation, and dynamic respiration etc., with sensible defaults you can tweak.
 4. **Fast what-if studies**: Change flow rate, supply temperature, CO2 concentration, and diffuser placement and quickly rerun for comparison.
 5. **Visualization-ready outputs**: Exports a standard OpenFOAM case for viewing CO2 / velocity / temperature / pressure etc. in ParaView.
 6. **In-Grasshopper post-processing & IAQ evaluation**: Directly read OpenFOAM results inside Grasshopper for visualization and CO2-based Indoor Air Quality (IAQ) evaluation based on different standards.
