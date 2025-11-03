@@ -49,7 +49,9 @@ carbonfly/
 ├─ snappy_writer.py       # Writes snappyHexMeshDict & surfaceFeatures dicts
 ├─ boundary.py            # Boundary conditions
 ├─ geo.py                 # Geometry normalization
+├─ iaq.py                 # Indoor Air Quality evaluation
 ├─ mesh.py                # Rhino Brep -> Mesh conversion & STL export helpers
+├─ postproc.py            # Post-processing
 ├─ utils.py               # Helper functions
 ├─ wsl.py                 # Launches OpenFOAM in WSL
 │
@@ -107,17 +109,26 @@ grasshopper/UserObjects/Carbonfly
 │  ├─ checkMesh           # Run OpenFOAM checkMesh
 │  └─ foamMonitor         # Run OpenFOAM foamMonitor
 │
-└─ 05:Util
-   ├─ Air Exchange Rate (Maas)      # Air exchange rate in m3/h using Maas' formula
-   ├─ BSA (Du Bois)       # Calculate Body Surface Area using Du Bois' formula
-   ├─ CO2 generation rate # Get CO2 generation rate (L/s)
-   ├─ Gagge two-node model          # Gagge Two-node model of human temperature regulation
-   ├─ Gagge two-node model (sleep)  # Adaption of the Gagge model for sleep thermal environment
-   ├─ Surface Wind Pressure         # Computes peak and surface wind pressure
+├─ 05:Util
+│  ├─ Air Exchange Rate (Maas)      # Air exchange rate in m3/h using Maas' formula
+│  ├─ BSA (Du Bois)       # Calculate Body Surface Area using Du Bois' formula
+│  ├─ CO2 generation rate # Get CO2 generation rate (L/s)
+│  ├─ Gagge two-node model          # Gagge Two-node model of human temperature regulation
+│  ├─ Gagge two-node model (sleep)  # Adaption of the Gagge model for sleep thermal environment
+│  ├─ Surface Wind Pressure         # Computes peak and surface wind pressure
+│  │
+│  ├─ Manikin LOD 0       # Manikin model Level of Detail 0
+│  │
+│  └─ Carbonfly Met List  # Preset physical activity (met) list
+│
+└─ 06:Post-processing
+   ├─ internalProbes      # Create OpenFOAM system/internalProbes dictionary for post-processing
+   ├─ postProcess         # Run OpenFOAM post-processing for internalProbes
+   ├─ Read Results        # Read sampled field values from postProcessing/internalProbes//points.xy
    │
-   ├─ Manikin LOD 0       # Manikin model Level of Detail 0
+   ├─ CO2-based IAQ       # Evaluate Indoor Air Quality (IAQ) from CO2 concentration, based on different standards
    │
-   └─ Carbonfly Met List  # Preset physical activity (met) list
+   └─ Carbonfly IAQ Standards       # A preset list of CO2-based IAQ standards
 ```
 
 The scripts for each GH User Object are saved in `carbonfly/grasshopper/XXXXXX.py`.
