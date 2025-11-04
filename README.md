@@ -163,12 +163,11 @@ If you want to cite **Carbonfly** in your academic work, there are two ways to d
   ```bibtex
   @software{Carbonfly_Huang,
     author    = {Qirui Huang},
-    title     = {Carbonfly},
-    subtitle  = {An easy-to-use Python library and Grasshopper toolbox for indoor CO2 CFD simulation},
+    title     = {Carbonfly: An easy-to-use {Python} library and {Grasshopper} toolbox for indoor {CO2} {CFD} simulation},
     date      = {2025},
     publisher = {Zenodo},
     url       = {https://github.com/RWTH-E3D/carbonfly},
-    note      = {GitHub repository},
+    note      = {{GitHub} repository},
     doi       = {10.5281/zenodo.17117827}
   }
   ```
