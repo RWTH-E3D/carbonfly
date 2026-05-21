@@ -197,3 +197,7 @@ Below are the steps to create a custom boundary condition for your use:
    2. Update `field_writer.py` for example `_field_block_text()`
 
 [Back to top ↥](#instructions-for-developers)
+
+### Q4: I'm using Rhino 8, but after installing Carbonfly, Grasshopper reports an error: "The User Object could not be created as the base type is missing".
+
+Your Rhino 8 version is likely outdated. Early versions of Grasshopper for Rhino 8 do not support certain cell types used by Carbonfly. To resolve this issue, please update your Rhino 8 to the latest version.
