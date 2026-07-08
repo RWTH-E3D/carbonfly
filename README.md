@@ -6,7 +6,7 @@
 [![WSL](https://img.shields.io/badge/Windows-10_&_11_|_with_WSL_2-7a6fac)](https://learn.microsoft.com/en-us/windows/wsl/install)&nbsp;
 [![OpenFOAM](https://img.shields.io/badge/OpenFOAM-v10-7a6fac)](https://openfoam.org/version/10/)&nbsp;
 [![License](https://img.shields.io/github/license/RWTH-E3D/carbonfly?color=888)](https://github.com/RWTH-E3D/carbonfly/blob/master/LICENSE)&nbsp;
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17117827.svg)](https://doi.org/10.5281/zenodo.17117827)&nbsp;
+[![DOI](https://zenodo.org/badge/1054125185.svg)](https://doi.org/10.5281/zenodo.17117827)
 
 An easy-to-use Python library and Grasshopper toolbox for indoor CO2 CFD simulation, based on OpenFOAM and the Windows Subsystem for Linux (WSL).
 
