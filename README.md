@@ -6,7 +6,9 @@
 [![WSL](https://img.shields.io/badge/Windows-10_&_11_|_with_WSL_2-7a6fac)](https://learn.microsoft.com/en-us/windows/wsl/install)&nbsp;
 [![OpenFOAM](https://img.shields.io/badge/OpenFOAM-v10-7a6fac)](https://openfoam.org/version/10/)&nbsp;
 [![License](https://img.shields.io/github/license/RWTH-E3D/carbonfly?color=888)](https://github.com/RWTH-E3D/carbonfly/blob/master/LICENSE)&nbsp;
+[![DOI](https://img.shields.io/badge/DOI-10.1016%2Fj.softx.2026.102580-blue)](https://doi.org/10.1016/j.softx.2026.102580)&nbsp;
 [![DOI](https://zenodo.org/badge/1054125185.svg)](https://doi.org/10.5281/zenodo.17117827)
+
 
 An easy-to-use Python library and Grasshopper toolbox for indoor CO2 CFD simulation, based on OpenFOAM and the Windows Subsystem for Linux (WSL).
 
@@ -183,7 +185,7 @@ If you want to cite **Carbonfly**, there are two ways to do it:
   Huang, Q., Langenbeck, A., Frisch, J., & van Treeck, C. (2026). Carbonfly: An easy-to-use Python library and Grasshopper toolbox for CO₂-based indoor airflow and air quality CFD simulation. SoftwareX, 34, 102580. https://doi.org/10.1016/j.softx.2026.102580
   ```
 
-- If your work depends on a specific release of Carbonfly, please additionally cite the archived Zenodo version corresponding to the release you used. Each release is archived on [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17117827.svg)](https://doi.org/10.5281/zenodo.17117827). Please either cite the version you used as indexed at Zenodo (for reproducibility) or cite all versions.
+- If your work depends on a specific release of Carbonfly, please additionally cite the archived Zenodo version corresponding to the release you used. Each release is archived on [![DOI](https://zenodo.org/badge/1054125185.svg)](https://doi.org/10.5281/zenodo.17117827). Please either cite the version you used as indexed at Zenodo (for reproducibility) or cite all versions.
 
   **Examples:**
 
