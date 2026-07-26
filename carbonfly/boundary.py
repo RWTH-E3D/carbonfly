@@ -337,6 +337,68 @@ class FieldCO2FromPatchAverage:
         }
 
 
+@dataclass
+class FieldTFromPatchAverage:
+    """
+    Set T at this patch to the area-weighted average T on another patch.
+    Typical use: fan discharge -> sample from fan intake (fan adds/removes no heat).
+
+    Args:
+        source_patch (str): Patch to sample T from.
+        name (str): Name of the codedFixedValue block.
+    """
+
+    source_patch: str
+    name: str = "tFromPatchAvg"
+
+    def to_dict(self) -> Dict[str, Any]:
+        code = f"""#{{
+
+    // find source patch
+    const label srcPid = this->patch().boundaryMesh().findPatchID("{self.source_patch}");
+    if (srcPid < 0)
+    {{
+        FatalErrorInFunction
+            << "Cannot find source patch '{self.source_patch}'" << nl
+            << abort(FatalError);
+    }}
+
+    // T volume field
+    const volScalarField& T = this->db().lookupObject<volScalarField>("T");
+
+    // source patch field
+    const fvPatchScalarField& srcPf = T.boundaryField()[srcPid];
+    const scalarField srcVals(srcPf);   // safe copy
+
+    if (srcVals.empty())
+    {{
+        FatalErrorInFunction
+            << "Source patch '{self.source_patch}' has zero faces" << nl
+            << abort(FatalError);
+    }}
+
+    // area-weighted average
+    const fvPatch& srcPatch = T.mesh().boundary()[srcPid];
+    const scalarField A(mag(srcPatch.Sf()));
+
+    const scalar num = gSum(srcVals * A);
+    const scalar den = gSum(A);
+    const scalar avgT = (den > SMALL) ? (num/den) : (gSum(srcVals)/srcVals.size());
+
+    // assign uniform value to this patch
+    operator==(avgT);
+    fixedValueFvPatchScalarField::updateCoeffs();
+
+#}};"""
+
+        return {
+            "type": "codedFixedValue",
+            "value": "$internalField",
+            "name": self.name,
+            "code": code,
+        }
+
+
 BoundaryType = Literal["inletVelocity", "outletPressure", "wall", "symmetry", "custom"]
 
 
