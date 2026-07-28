@@ -209,7 +209,7 @@ Outlet boundary (zeroGradient)
 
 <img src="../grasshopper/icons/RecircReturn.png" alt="icon" width="60"/>
 
-Recirculated return from the room. Pair with RecircSupply.
+Recirculated return from the room. Pair with `RecircSupply`.
 
 ![RecircReturn](_pics/GH_Carbonfly_RecircReturn.png)
 
@@ -232,6 +232,31 @@ Recirculated supply to the room. $\rm CO_2$ can mirror the Return average to mod
 | `velocity` *(Vector3d)*: Supply velocity (m/s) as a vector, e.g. (0, 0, -1) | `boundary`: Carbonfly RecircSupply boundary |
 | `temperature` *(float)*: Supply temperature in K (e.g. 293.15)              |                                             |
 | `return_name` *(str)*: Region/solid name of Recirculation Return            |                                             |
+
+[Back to top ↥](#carbonfly-toolbox-documentation)
+
+#### FanReturn
+
+<img src="../grasshopper/icons/FanReturn.png" alt="icon" width="60"/>
+
+Recirculated **fan** return from the room. Pair with `FanSupply`. Similar to `RecircReturn`.
+
+| Inputs                                                                      | Outputs                                  |
+|-----------------------------------------------------------------------------|------------------------------------------|
+| `velocity` *(Vector3d)*: Return velocity (m/s) as a vector, e.g. (0, 0, -1) | `boundary`: Carbonfly FanReturn boundary |
+
+[Back to top ↥](#carbonfly-toolbox-documentation)
+
+#### FanSupply
+
+<img src="../grasshopper/icons/FanSupply.png" alt="icon" width="60"/>
+
+Recirculated **fan** supply to the room. $\rm CO_2$ and T **both** can mirror the Return average to model fan recirculation. Pair with `FanReturn`. Similar to `RecircSupply`, the difference is that this boundary condition does not change the air temperature T.
+
+| Inputs                                                                      | Outputs                                  |
+|-----------------------------------------------------------------------------|------------------------------------------|
+| `velocity` *(Vector3d)*: Supply velocity (m/s) as a vector, e.g. (0, 0, -1) | `boundary`: Carbonfly FanSupply boundary |
+| `return_name` *(str)*: Region/solid name of Fan Return                      |                                          |
 
 [Back to top ↥](#carbonfly-toolbox-documentation)
 
