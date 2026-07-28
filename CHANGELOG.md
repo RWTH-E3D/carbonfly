@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.9.0 (2026-07-28)
+
+1. #3 Add boundary condition for electric fan
+2. Add Example 09 for electric fan
+3. Update documentation
+
 ## v0.8.0 (2025-11-02)
 
 1. #2 Add CO2-based IAQ evaluation, based on:

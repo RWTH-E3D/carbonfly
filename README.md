@@ -101,6 +101,12 @@ An easy-to-use Python library and Grasshopper toolbox for indoor CO2 CFD simulat
     </td>
   </tr>
   <tr>
+    <td>Recirculated fan supply & return</td>
+    <td>✅ Done (v0.9.0)</td>
+    <td>Paired boundaries for for electric fan recirculation (no changes in CO2 and T). The CO2 concentration and the air temperature of the supply air is equal to that of the return air (dynamic).
+    </td>
+  </tr>
+  <tr>
     <td rowspan="3">Post-processing</td>
     <td>✅ Done (v0.8.0)</td>
     <td>Perform analysis and visualization directly in Grasshopper instead of ParaView. See our <a href="./examples" alt="Examples" target="_blank">Examples</a>.</td>
