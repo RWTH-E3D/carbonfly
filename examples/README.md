@@ -24,6 +24,7 @@ Below is a collection of examples with descriptions to help you get started quic
   - `07_postprocessing_points.gh`
 - Example 08: [Post-processing and visualization of the values of a slice as a heatmap from Example 1a](#example-08)
   - `08_postprocessing_heatmap.gh`
+- Example 09: [A simple room with a pedestal fan and a manikin (LOD 0) using Dynamic Respiration](#example-09)
 
 ## Example 01
 
@@ -428,5 +429,16 @@ Transient simulation (0 - 300 s). Results in Rhino & Grasshopper:
     </td>
   </tr>
 </table>
+
+[Back to top ↥](#quick-navigation)
+
+## Example 09
+
+A simple room with a pedestal fan (with `FanSupply` and `FanReturn`, no changes in CO2 and T) and a manikin (LOD 0) using Dynamic Respiration, similar to [Example 06](#example-06).
+
+Transient simulation (0 - 180 s). Results in ParaView:
+
+<img src="./_pics/09_fan_recirc_transient_CO2_ParaView.gif" width="100%" alt="Example 09 CO2" />
+
 
 [Back to top ↥](#quick-navigation)
