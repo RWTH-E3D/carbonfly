@@ -16,6 +16,8 @@
       * [Outlet](#outlet)
       * [RecircReturn](#recircreturn)
       * [RecircSupply](#recircsupply)
+      * [FanReturn](#fanreturn)
+      * [FanSupply](#fansupply)
       * [Wall](#wall)
     * [03:Recipe](#03recipe)
       * [controlDict](#controldict)
