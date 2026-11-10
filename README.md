@@ -14,6 +14,8 @@ An easy-to-use Python library and Grasshopper toolbox for indoor CO2 CFD simulat
 
 <img src="./pics/carbonfly_logo.svg" width="10%" alt="Carbonfly Logo" />
 
+Carbonfly can also be found on [Food4Rhino](https://www.food4rhino.com/en/app/carbonfly).
+
 ## Quick Navigation
 
 - [Key Features](#key-features)
@@ -233,6 +235,11 @@ If you want to cite **Carbonfly**, there are two ways to do it:
 
 
 [Back to top ↥](#quick-navigation)
+
+## Acknowledgments
+
+We would like to sincerely thank McNeel for providing Lab License to support the development of Carbonfly ❤
+
 
 ## Contributors
 
